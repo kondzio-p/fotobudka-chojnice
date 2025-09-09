@@ -9,7 +9,12 @@
 		/>
 		<meta name="theme-color" content="#eec9d2" />
 		<title>Fotobudka Chojnice - OG Events</title>
-		<link rel="icon" type="image/png" sizes="48x48" href="/images/og-events-logo-prof.png" />
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="48x48"
+			href="/images/og-events-logo-prof.png"
+		/>
 		<link rel="shortcut icon" href="/favicon.ico" />
 
 		<!-- Bootstrap CSS -->
@@ -18,12 +23,25 @@
 		<!-- Custom CSS -->
 		<link rel="stylesheet" href="style/style.css" />
 
-		<!-- Preload ważnych obrazów -->
+		<!-- Preload ważnych obrazów i filmów -->
 		<link rel="preload" href="images/360.png" as="image" />
 		<link rel="preload" href="images/mirror.jpg" as="image" />
 		<link rel="preload" href="images/heavysmoke.jpg" as="image" />
 		<link rel="preload" href="images/fountain.jpg" as="image" />
 		<link rel="preload" href="images/neons.jpg" as="image" />
+
+		<link
+			rel="preload"
+			href="videos/film1.webm"
+			as="video"
+			type="video/webm"
+		/>
+		<link
+			rel="preload"
+			href="videos/film2.webm"
+			as="video"
+			type="video/webm"
+		/>
 
 		<!-- Removed video preloads to avoid browser warnings for unsupported `as` in some contexts -->
 	</head>
@@ -36,7 +54,7 @@
 			<div class="nav-container">
 				<!-- Logo i menu na desktopie -->
 				<div class="logo d-none d-md-block">
-					<img
+					<img decoding="async" loading="lazy"
 						src="images/og-events-logo-white.png"
 						alt="OG Events Logo"
 						onerror="this.outerHTML='<div style=\'color: #8b4b7a; font-weight: bold; font-size: 24px;\'>OG<br><span style=\'font-size: 12px; font-weight: normal;\'>EVENT SPOT</span></div>'"
@@ -60,14 +78,14 @@
 						target="_blank"
 						class="social-icon facebook"
 						aria-label="Facebook"
-						><img src="images/fb.svg" width="20px" alt=""
+						><img decoding="async" loading="lazy" src="images/fb.svg" width="20px" alt=""
 					/></a>
 					<a
 						href="https://www.instagram.com/og.eventspot/"
 						target="_blank"
 						class="social-icon instagram"
 						aria-label="Instagram"
-						><img src="images/insta.svg" width="25px" alt=""
+						><img decoding="async" loading="lazy" src="images/insta.svg" width="25px" alt=""
 					/></a>
 				</div>
 
@@ -76,7 +94,7 @@
 					<!-- Górny pasek: logo + social media -->
 					<div class="header-top-row">
 						<div class="logo">
-							<img
+							<img decoding="async" loading="lazy"
 								src="images/og-events-logo-white.png"
 								alt="OG Events Logo"
 								onerror="this.outerHTML='<div style=\'color: #8b4b7a; font-weight: bold; font-size: 18px;\'>OG<br><span style=\'font-size: 10px; font-weight: normal;\'>EVENT SPOT</span></div>'"
@@ -89,14 +107,14 @@
 								target="_blank"
 								class="social-icon facebook"
 								aria-label="Facebook"
-								><img src="images/fb.svg" width="16px" alt=""
+								><img decoding="async" loading="lazy" src="images/fb.svg" width="16px" alt=""
 							/></a>
 							<a
 								href="https://www.instagram.com/og.eventspot/"
 								target="_blank"
 								class="social-icon instagram"
 								aria-label="Instagram"
-								><img
+								><img decoding="async" loading="lazy"
 									src="images/insta.svg"
 									width="18px"
 									alt=""
@@ -123,7 +141,7 @@
 			<div class="photo-gallery">
 				<!-- Ramka 1 -->
 				<div class="photo-frame">
-					<video
+					<video preload="metadata"
 						src="videos/film1.webm"
 						alt="Event video 1"
 						autoplay
@@ -131,13 +149,14 @@
 						loop
 						playsinline
 						data-start-time="7"
-						onerror="this.outerHTML='<img src=\'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjgwIiBoZWlnaHQ9IjMyMCIgdmlld0JveD0iMCAwIDI4MCAzMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyODAiIGhlaWdodD0iMzIwIiBmaWxsPSIjRjBGMEYwIi8+Cjx0ZXh0IHg9IjE0MCIgeT0iMTY1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjOTk5IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiPkV2ZW50IFZpZGVvIDE8L3RleHQ+PC9zdmc+\' alt=\'Event Video 1\'/>'"
+						class="video-lazy"
+						onerror="this.outerHTML='<img decoding="async" loading="lazy" src=\'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjgwIiBoZWlnaHQ9IjMyMCIgdmlld0JveD0iMCAwIDI4MCAzMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyODAiIGhlaWdodD0iMzIwIiBmaWxsPSIjRjBGMEYwIi8+Cjx0ZXh0IHg9IjE0MCIgeT0iMTY1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjOTk5IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiPkV2ZW50IFZpZGVvIDE8L3RleHQ+PC9zdmc+\' alt=\'Event Video 1\'/>'"
 					></video>
 				</div>
 
 				<!-- Ramka 2 -->
 				<div class="photo-frame">
-					<video
+					<video preload="metadata"
 						src="videos/film2.webm"
 						alt="Event video 2"
 						autoplay
@@ -145,13 +164,14 @@
 						loop
 						playsinline
 						data-start-time="3"
-						onerror="this.outerHTML='<img src=\'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjgwIiBoZWlnaHQ9IjMyMCIgdmlld0JveD0iMCAwIDI4MCAzMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyODAiIGhlaWdodD0iMzIwIiBmaWxsPSIjRjBGMEYwIi8+Cjx0ZXh0IHg9IjE0MCIgeT0iMTY1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjOTk5IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiPkV2ZW50IFZpZGVvIDI8L3RleHQ+PC9zdmc+\' alt=\'Event Video 2\'/>'"
+						class="video-lazy"
+						onerror="this.outerHTML='<img decoding="async" loading="lazy" src=\'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjgwIiBoZWlnaHQ9IjMyMCIgdmlld0JveD0iMCAwIDI4MCAzMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyODAiIGhlaWdodD0iMzIwIiBmaWxsPSIjRjBGMEYwIi8+Cjx0ZXh0IHg9IjE0MCIgeT0iMTY1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjOTk5IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiPkV2ZW50IFZpZGVvIDI8L3RleHQ+PC9zdmc+\' alt=\'Event Video 2\'/>'"
 					></video>
 				</div>
 
 				<!-- Ramka 3 -->
 				<div class="photo-frame">
-					<video
+					<video preload="metadata"
 						src="videos/film1.webm"
 						alt="Event video 3"
 						autoplay
@@ -159,13 +179,13 @@
 						loop
 						playsinline
 						data-start-time="2"
-						onerror="this.outerHTML='<img src=\'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjgwIiBoZWlnaHQ9IjMyMCIgdmlld0JveD0iMCAwIDI4MCAzMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyODAiIGhlaWdodD0iMzIwIiBmaWxsPSIjRjBGMEYwIi8+Cjx0ZXh0IHg9IjE0MCIgeT0iMTY1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjOTk5IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiPkV2ZW50IFZpZGVvIDM8L3RleHQ+PC9zdmc+\' alt=\'Event Video 3\'/>'"
+						onerror="this.outerHTML='<img decoding="async" loading="lazy" src=\'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjgwIiBoZWlnaHQ9IjMyMCIgdmlld0JveD0iMCAwIDI4MCAzMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyODAiIGhlaWdodD0iMzIwIiBmaWxsPSIjRjBGMEYwIi8+Cjx0ZXh0IHg9IjE0MCIgeT0iMTY1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjOTk5IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiPkV2ZW50IFZpZGVvIDM8L3RleHQ+PC9zdmc+\' alt=\'Event Video 3\'/>'"
 					></video>
 				</div>
 
 				<!-- Ramka 4 -->
 				<div class="photo-frame">
-					<video
+					<video preload="metadata"
 						src="videos/film2.webm"
 						alt="Event video 4"
 						autoplay
@@ -173,7 +193,7 @@
 						loop
 						playsinline
 						data-start-time="4"
-						onerror="this.outerHTML='<img src=\'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjgwIiBoZWlnaHQ9IjMyMCIgdmlld0JveD0iMCAwIDI4MCAzMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyODAiIGhlaWdodD0iMzIwIiBmaWxsPSIjRjBGMEYwIi8+Cjx0ZXh0IHg9IjE0MCIgeT0iMTY1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjOTk5IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiPkV2ZW50IFZpZGVvIDQ8L3RleHQ+PC9zdmc+\' alt=\'Event Video 4\'/>'"
+						onerror="this.outerHTML='<img decoding="async" loading="lazy" src=\'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjgwIiBoZWlnaHQ9IjMyMCIgdmlld0JveD0iMCAwIDI4MCAzMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyODAiIGhlaWdodD0iMzIwIiBmaWxsPSIjRjBGMEYwIi8+Cjx0ZXh0IHg9IjE0MCIgeT0iMTY1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjOTk5IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiPkV2ZW50IFZpZGVvIDQ8L3RleHQ+PC9zdmc+\' alt=\'Event Video 4\'/>'"
 					></video>
 				</div>
 			</div>
@@ -499,7 +519,7 @@
 					<!-- Lista slajdów w karuzeli -->
 					<div class="image-carousel">
 						<div class="image-slide image-slide-left">
-							<img
+							<img decoding="async"
 								data-src="images/360.png"
 								alt="Gallery image"
 								loading="lazy"
@@ -507,7 +527,7 @@
 							/>
 						</div>
 						<div class="image-slide image-slide-center active">
-							<img
+							<img decoding="async"
 								data-src="images/mirror.jpg"
 								alt="Gallery image"
 								loading="lazy"
@@ -515,7 +535,7 @@
 							/>
 						</div>
 						<div class="image-slide image-slide-right">
-							<img
+							<img decoding="async"
 								data-src="images/heavysmoke.jpg"
 								alt="Gallery image"
 								loading="lazy"
@@ -676,7 +696,7 @@
 										margin-right: 20px;
 									"
 								>
-									<img
+									<img decoding="async" loading="lazy"
 										src="images/fb.svg"
 										alt="Facebook"
 										style="width: 32px; height: 32px"
@@ -717,7 +737,7 @@
 										margin-right: 20px;
 									"
 								>
-									<img
+									<img decoding="async" loading="lazy"
 										src="images/insta.svg"
 										alt="Instagram"
 										style="width: 32px; height: 32px"
@@ -758,7 +778,7 @@
 										margin-right: 20px;
 									"
 								>
-									<img
+									<img decoding="async" loading="lazy"
 										src="images/phone.svg"
 										alt="Phone"
 										style="width: 32px; height: 32px"

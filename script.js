@@ -905,3 +905,450 @@ document.addEventListener("DOMContentLoaded", function () {
 		},
 	});
 });
+
+// === Hover stability fallback for offer cards ===
+(function () {
+	var cards = document.querySelectorAll(".offer-card");
+	if (!cards.length) return;
+	cards.forEach(function (card) {
+		var t;
+		card.addEventListener(
+			"pointerenter",
+			function () {
+				if (t) {
+					clearTimeout(t);
+					t = null;
+				}
+				card.classList.add("is-hover");
+			},
+			{ passive: true }
+		);
+		card.addEventListener(
+			"pointerleave",
+			function () {
+				t = setTimeout(function () {
+					card.classList.remove("is-hover");
+				}, 80);
+			},
+			{ passive: true }
+		);
+	});
+})();
+
+// === Pause offscreen videos to reduce decode/render load ===
+(function () {
+	var vids = document.querySelectorAll(
+		".photo-frame video, video.autoplay, video[autoplay]"
+	);
+	if (!("IntersectionObserver" in window) || !vids.length) return;
+	var io = new IntersectionObserver(
+		function (entries) {
+			entries.forEach(function (e) {
+				var v = e.target;
+				if (e.isIntersecting) {
+					if (
+						v.paused &&
+						(v.getAttribute("autoplay") !== null ||
+							v.classList.contains("autoplay"))
+					) {
+						var playPromise = v.play();
+						if (playPromise && playPromise.catch)
+							playPromise.catch(function () {});
+					}
+				} else {
+					if (!v.paused) v.pause();
+				}
+			});
+		},
+		{ threshold: 0.01 }
+	);
+	vids.forEach(function (v) {
+		io.observe(v);
+	});
+})();
+
+// === Lightweight rAF gate for scroll ===
+(function () {
+	var ticking = false;
+	function onTick() {
+		ticking = false;
+	}
+	window.addEventListener(
+		"scroll",
+		function () {
+			if (!ticking) {
+				requestAnimationFrame(onTick);
+				ticking = true;
+			}
+		},
+		{ passive: true }
+	);
+})();
+
+// ===== LIGHTBOX FUNCTIONALITY =====
+let lightboxImages = [];
+let currentLightboxIndex = 0;
+let isLightboxOpen = false;
+
+// Initialize lightbox
+function initializeLightbox() {
+	// Collect all gallery images
+	const gallerySlides = document.querySelectorAll(".image-slide img");
+	lightboxImages = [];
+
+	gallerySlides.forEach((img, index) => {
+		const imageSrc = img.dataset.src || img.src;
+		if (imageSrc && !imageSrc.includes("data:image/svg+xml")) {
+			lightboxImages.push({
+				src: imageSrc,
+				alt: img.alt || `Gallery image ${index + 1}`,
+				index: index,
+			});
+		}
+	});
+
+	// Add click listeners to gallery images
+	gallerySlides.forEach((img, index) => {
+		img.style.cursor = "pointer";
+		img.addEventListener("click", () => {
+			const imageSrc = img.dataset.src || img.src;
+			if (imageSrc && !imageSrc.includes("data:image/svg+xml")) {
+				const lightboxIndex = lightboxImages.findIndex(
+					(item) => item.src === imageSrc
+				);
+				if (lightboxIndex >= 0) {
+					openLightbox(lightboxIndex);
+				}
+			}
+		});
+	});
+
+	// Create lightbox overlay if it doesn't exist
+	if (!document.getElementById("lightboxOverlay")) {
+		createLightboxHTML();
+	}
+}
+
+// Create lightbox HTML structure
+function createLightboxHTML() {
+	const lightboxHTML = `
+		<div id="lightboxOverlay" class="lightbox-overlay">
+			<div class="lightbox-container">
+				<!-- Close button -->
+				<button class="lightbox-close" onclick="closeLightbox()" aria-label="Zamknij galerię">
+					<svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+						<path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+					</svg>
+				</button>
+				
+				<!-- Navigation arrows -->
+				<button class="lightbox-arrow lightbox-arrow-left" onclick="prevLightboxImage()" aria-label="Poprzedni obraz">
+					<svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+						<path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+					</svg>
+				</button>
+				
+				<button class="lightbox-arrow lightbox-arrow-right" onclick="nextLightboxImage()" aria-label="Następny obraz">
+					<svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+						<path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+					</svg>
+				</button>
+				
+				<!-- Main image container -->
+				<div class="lightbox-image-container">
+					<img id="lightboxImage" src="" alt="" />
+					<div class="lightbox-loading">
+						<div class="loading-spinner"></div>
+					</div>
+				</div>
+				
+				<!-- Image counter -->
+				<div class="lightbox-counter">
+					<span id="lightboxCurrentNumber">1</span> / <span id="lightboxTotalNumber">1</span>
+				</div>
+				
+				<!-- Thumbnails strip (optional) -->
+				<div class="lightbox-thumbnails" id="lightboxThumbnails">
+					<!-- Thumbnails will be dynamically added here -->
+				</div>
+			</div>
+		</div>
+	`;
+
+	document.body.insertAdjacentHTML("beforeend", lightboxHTML);
+}
+
+// Open lightbox
+function openLightbox(imageIndex) {
+	if (lightboxImages.length === 0) return;
+
+	currentLightboxIndex = imageIndex;
+	isLightboxOpen = true;
+
+	const overlay = document.getElementById("lightboxOverlay");
+	const body = document.body;
+
+	// Disable body scrolling
+	body.style.overflow = "hidden";
+
+	// Show overlay
+	overlay.classList.add("active");
+
+	// Stop carousel auto-play
+	pauseAutoPlay();
+
+	// Update lightbox content
+	updateLightboxContent();
+
+	// Generate thumbnails
+	generateThumbnails();
+
+	// Add keyboard listeners
+	document.addEventListener("keydown", handleLightboxKeyboard);
+}
+
+// Close lightbox
+window.closeLightbox = function () {
+	const overlay = document.getElementById("lightboxOverlay");
+	const body = document.body;
+
+	if (overlay) {
+		overlay.classList.remove("active");
+		isLightboxOpen = false;
+
+		// Re-enable body scrolling
+		body.style.overflow = "";
+
+		// Resume auto-play
+		setTimeout(() => {
+			resumeAutoPlay();
+		}, 500);
+
+		// Remove keyboard listeners
+		document.removeEventListener("keydown", handleLightboxKeyboard);
+	}
+};
+
+// Update lightbox content
+function updateLightboxContent() {
+	if (lightboxImages.length === 0) return;
+
+	const lightboxImage = document.getElementById("lightboxImage");
+	const currentNumberEl = document.getElementById("lightboxCurrentNumber");
+	const totalNumberEl = document.getElementById("lightboxTotalNumber");
+	const loadingEl = document.querySelector(".lightbox-loading");
+
+	if (!lightboxImage) return;
+
+	const currentImage = lightboxImages[currentLightboxIndex];
+
+	// Update counter
+	if (currentNumberEl) currentNumberEl.textContent = currentLightboxIndex + 1;
+	if (totalNumberEl) totalNumberEl.textContent = lightboxImages.length;
+
+	// Show loading
+	if (loadingEl) loadingEl.style.display = "flex";
+	lightboxImage.style.opacity = "0";
+
+	// Load new image
+	lightboxImage.onload = function () {
+		if (loadingEl) loadingEl.style.display = "none";
+
+		// Animate image entrance
+		gsap.to(lightboxImage, {
+			opacity: 1,
+			scale: 1,
+			duration: 0.4,
+			ease: "power2.out",
+		});
+	};
+
+	lightboxImage.onerror = function () {
+		if (loadingEl) loadingEl.style.display = "none";
+		console.warn("Failed to load lightbox image:", currentImage.src);
+
+		// Show error placeholder
+		this.src =
+			"data:image/svg+xml;base64," +
+			btoa(
+				'<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">' +
+					'<rect width="100%" height="100%" fill="#f0f0f0"/>' +
+					'<text x="50%" y="50%" font-family="Arial" font-size="16" fill="#999" text-anchor="middle" dy=".3em">Nie można załadować obrazu</text>' +
+					"</svg>"
+			);
+
+		gsap.to(lightboxImage, {
+			opacity: 1,
+			duration: 0.3,
+		});
+	};
+
+	lightboxImage.src = currentImage.src;
+	lightboxImage.alt = currentImage.alt;
+
+	// Update thumbnails highlight
+	updateThumbnailHighlight();
+}
+
+// Generate thumbnails
+function generateThumbnails() {
+	const thumbnailsContainer = document.getElementById("lightboxThumbnails");
+	if (!thumbnailsContainer || lightboxImages.length <= 1) return;
+
+	thumbnailsContainer.innerHTML = "";
+
+	lightboxImages.forEach((image, index) => {
+		const thumbnailDiv = document.createElement("div");
+		thumbnailDiv.className = "lightbox-thumbnail";
+		if (index === currentLightboxIndex) {
+			thumbnailDiv.classList.add("active");
+		}
+
+		const thumbnailImg = document.createElement("img");
+		thumbnailImg.src = image.src;
+		thumbnailImg.alt = image.alt;
+
+		thumbnailDiv.appendChild(thumbnailImg);
+
+		// Add click listener
+		thumbnailDiv.addEventListener("click", () => {
+			if (index !== currentLightboxIndex) {
+				currentLightboxIndex = index;
+				updateLightboxContent();
+			}
+		});
+
+		thumbnailsContainer.appendChild(thumbnailDiv);
+	});
+}
+
+// Update thumbnail highlight
+function updateThumbnailHighlight() {
+	const thumbnails = document.querySelectorAll(".lightbox-thumbnail");
+	thumbnails.forEach((thumb, index) => {
+		thumb.classList.toggle("active", index === currentLightboxIndex);
+	});
+}
+
+// Navigate to next image
+window.nextLightboxImage = function () {
+	if (lightboxImages.length <= 1) return;
+
+	currentLightboxIndex = (currentLightboxIndex + 1) % lightboxImages.length;
+
+	// Animate transition
+	const lightboxImage = document.getElementById("lightboxImage");
+	gsap.to(lightboxImage, {
+		x: -30,
+		opacity: 0,
+		duration: 0.2,
+		ease: "power2.in",
+		onComplete: () => {
+			updateLightboxContent();
+			gsap.set(lightboxImage, { x: 30 });
+		},
+	});
+};
+
+// Navigate to previous image
+window.prevLightboxImage = function () {
+	if (lightboxImages.length <= 1) return;
+
+	currentLightboxIndex =
+		(currentLightboxIndex - 1 + lightboxImages.length) %
+		lightboxImages.length;
+
+	// Animate transition
+	const lightboxImage = document.getElementById("lightboxImage");
+	gsap.to(lightboxImage, {
+		x: 30,
+		opacity: 0,
+		duration: 0.2,
+		ease: "power2.in",
+		onComplete: () => {
+			updateLightboxContent();
+			gsap.set(lightboxImage, { x: -30 });
+		},
+	});
+};
+
+// Handle keyboard navigation
+function handleLightboxKeyboard(e) {
+	if (!isLightboxOpen) return;
+
+	switch (e.key) {
+		case "Escape":
+			e.preventDefault();
+			closeLightbox();
+			break;
+		case "ArrowRight":
+			e.preventDefault();
+			nextLightboxImage();
+			break;
+		case "ArrowLeft":
+			e.preventDefault();
+			prevLightboxImage();
+			break;
+	}
+}
+
+// Touch gestures for lightbox
+let lightboxTouchStartX = 0;
+let lightboxTouchEndX = 0;
+let lightboxTouchStartY = 0;
+let lightboxTouchEndY = 0;
+
+function handleLightboxTouchStart(e) {
+	lightboxTouchStartX = e.changedTouches[0].screenX;
+	lightboxTouchStartY = e.changedTouches[0].screenY;
+}
+
+function handleLightboxTouchEnd(e) {
+	lightboxTouchEndX = e.changedTouches[0].screenX;
+	lightboxTouchEndY = e.changedTouches[0].screenY;
+	handleLightboxGesture();
+}
+
+function handleLightboxGesture() {
+	const threshold = 50;
+	const restraint = 100;
+
+	const diffX = lightboxTouchStartX - lightboxTouchEndX;
+	const diffY = Math.abs(lightboxTouchStartY - lightboxTouchEndY);
+
+	// Check if it's a horizontal swipe
+	if (Math.abs(diffX) > threshold && diffY < restraint) {
+		if (diffX > 0) {
+			// Swipe left - next image
+			nextLightboxImage();
+		} else {
+			// Swipe right - previous image
+			prevLightboxImage();
+		}
+	}
+}
+
+// Initialize lightbox when DOM is loaded
+document.addEventListener("DOMContentLoaded", function () {
+	// Wait a moment for the gallery to initialize
+	setTimeout(() => {
+		initializeLightbox();
+
+		// Add touch gestures to lightbox
+		const lightboxContainer = document.querySelector(
+			".lightbox-image-container"
+		);
+		if (lightboxContainer) {
+			lightboxContainer.addEventListener(
+				"touchstart",
+				handleLightboxTouchStart,
+				{ passive: true }
+			);
+			lightboxContainer.addEventListener(
+				"touchend",
+				handleLightboxTouchEnd,
+				{ passive: true }
+			);
+		}
+	}, 1000);
+});
