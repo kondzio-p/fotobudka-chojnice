@@ -1335,51 +1335,130 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // === OPTYMALIZACJA ŁADOWANIA WIDEO ===
-document.addEventListener("DOMContentLoaded", function () {
-	const videos = document.querySelectorAll(".video-lazy");
-	let currentIndex = 0;
 
-	function loadNextVideo() {
-		if (currentIndex >= videos.length) return;
+// Funkcja throttle do optymalizacji eventów
+function throttle(fn, limit) {
+	let lastCall = 0;
+	return function (...args) {
+		const now = Date.now();
+		if (now - lastCall >= limit) {
+			lastCall = now;
+			fn(...args);
+		}
+	};
+}
 
-		const video = videos[currentIndex];
-		const src = video.dataset.src;
+// Lazy loading dla video (podobnie jak dla img, ale z video specifics)
+function loadVideoSafely(video) {
+	if (!video.dataset.src) return;
+
+	video.onloadstart = function () {
+		// Opcjonalnie: dodaj klasę loading
+	};
+
+	video.onloadeddata = function () {
+		video.classList.add("loaded");
+		// Ustaw start time jeśli podany
 		const startTime = parseFloat(video.dataset.startTime) || 0;
+		video.currentTime = startTime;
+		// Nie play tu - play tylko gdy aktywny
+	};
 
-		video.src = src;
-		video.load();
+	video.onerror = function () {
+		console.warn("Failed to load video:", video.dataset.src);
+		// Fallback to img jak w onerror
+		video.outerHTML = video.onerror
+			.toString()
+			.match(/this\.outerHTML='(.*?)'/)[1];
+	};
 
-		video.onloadeddata = () => {
-			video.currentTime = startTime;
-			video.play().catch(() => {});
-			currentIndex++;
-			loadNextVideo();
-		};
+	video.src = video.dataset.src;
+}
 
-		setTimeout(() => {
-			if (video.readyState < 3) {
-				currentIndex++;
-				loadNextVideo();
-			}
-		}, 8000);
-	}
-
-	loadNextVideo();
-
-	// Intersection Observer for pausing offscreen videos
+// Intersection Observer dla lazy video
+if ("IntersectionObserver" in window) {
 	const videoObserver = new IntersectionObserver(
-		(entries) => {
+		(entries, observer) => {
 			entries.forEach((entry) => {
-				const video = entry.target;
 				if (entry.isIntersecting) {
-					video.play().catch(() => {});
-				} else {
-					video.pause();
+					const video = entry.target;
+					loadVideoSafely(video);
+					observer.unobserve(video);
 				}
 			});
 		},
-		{ threshold: 0.1 }
+		{
+			rootMargin: "200px 0px", // Ładuj wcześniej na scroll
+			threshold: 0.1,
+		}
 	);
 
-	videos.forEach((video) => videoObserver.observe(video));
+	document.addEventListener("DOMContentLoaded", function () {
+		document.querySelectorAll("video[data-src]").forEach((video) => {
+			video.classList.add("lazy-loading");
+			videoObserver.observe(video);
+		});
+	});
+} else {
+	// Fallback
+	document.addEventListener("DOMContentLoaded", function () {
+		document.querySelectorAll("video[data-src]").forEach(loadVideoSafely);
+	});
+}
+
+// Zarządzanie odtwarzaniem video - tylko najbliższy środka
+const videos = document.querySelectorAll(".video-lazy");
+
+function getClosestToCenter() {
+	const viewportMidY = window.innerHeight / 2 + window.scrollY; // Absolutna pozycja środka viewport
+	let closest = null;
+	let minDist = Infinity;
+
+	videos.forEach((video) => {
+		const rect = video.getBoundingClientRect();
+		const videoMidY = window.scrollY + rect.top + rect.height / 2; // Absolutna pozycja środka video
+		const dist = Math.abs(videoMidY - viewportMidY);
+
+		// Sprawdź też czy w ogóle widoczny (częściowo)
+		if (
+			rect.bottom > 0 &&
+			rect.top < window.innerHeight &&
+			dist < minDist
+		) {
+			minDist = dist;
+			closest = video;
+		}
+	});
+
+	return closest;
+}
+
+function manageVideos() {
+	const activeVideo = getClosestToCenter();
+
+	videos.forEach((video) => {
+		if (video === activeVideo && video.src) {
+			// Tylko jeśli załadowany
+			video.play().catch((error) => {
+				console.warn("Autoplay blocked:", error);
+				// Opcjonalnie: pokaż play button lub coś, ale na muted/playsinline powinno działać
+			});
+		} else {
+			video.pause();
+			// Reset do start time, aby pokazać "poster-like" klatkę
+			const startTime = parseFloat(video.dataset.startTime) || 0;
+			if (video.currentTime !== startTime) {
+				video.currentTime = startTime;
+			}
+		}
+	});
+}
+
+// Event listeners z throttle
+const throttledManage = throttle(manageVideos, 100);
+
+window.addEventListener("scroll", throttledManage);
+window.addEventListener("resize", throttledManage);
+document.addEventListener("DOMContentLoaded", () => {
+	manageVideos(); // Initial check
 });
