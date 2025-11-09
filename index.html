@@ -204,65 +204,68 @@
 
 		<!-- Główna część strony -->
 		<main class="main-content">
-			<div class="photo-gallery">
-				<!-- Ramka 1 -->
-				<div class="photo-frame">
-					<video preload="metadata"
-						src="videos/filmik1s6.webm"
-						alt="Event video 1"
-						autoplay
-						muted
-						loop
-						playsinline
-						data-start-time="6"
-						class="video-lazy"
-						onerror="this.outerHTML='<img decoding="async" loading="lazy" src=\'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjgwIiBoZWlnaHQ9IjMyMCIgdmlld0JveD0iMCAwIDI4MCAzMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyODAiIGhlaWdodD0iMzIwIiBmaWxsPSIjRjBGMEYwIi8+Cjx0ZXh0IHg9IjE0MCIgeT0iMTY1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjOTk5IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiPkV2ZW50IFZpZGVvIDE8L3RleHQ+PC9zdmc+\' alt=\'Event Video 1\'/>'"
-					></video>
-				</div>
+			<!-- Zamień całą sekcję .photo-gallery na poniższą -->
+<div class="photo-gallery">
+	<!-- Ramka 1 -->
+	<div class="photo-frame">
+		<video
+			poster="videos/filmik1-poster.jpg"
+			data-src="videos/filmik1s6.webm"
+			data-start-time="6"
+			class="video-lazy"
+			muted
+			loop
+			playsinline
+			preload="none"
+			onerror="this.outerHTML='<img decoding=\"async\" loading=\"lazy\" src=\"data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjgwIiBoZWlnaHQ9IjMyMCIgdmlld0JveD0iMCAwIDI4MCAzMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyODAiIGhlaWdodD0iMzIwIiBmaWxsPSIjRjBGMEYwIi8+Cjx0ZXh0IHg9IjE0MCIgeT0iMTY1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjOTk5IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiPkV2ZW50IFZpZGVvIDE8L3RleHQ+PC9zdmc+\" alt=\"Event Video 1\"/>'"
+		></video>
+	</div>
 
-				<!-- Ramka 2 -->
-				<div class="photo-frame">
-					<video preload="metadata"
-						src="videos/filmik2.webm"
-						alt="Event video 2"
-						autoplay
-						muted
-						loop
-						playsinline
-						data-start-time="3"
-						class="video-lazy"
-						onerror="this.outerHTML='<img decoding="async" loading="lazy" src=\'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjgwIiBoZWlnaHQ9IjMyMCIgdmlld0JveD0iMCAwIDI4MCAzMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyODAiIGhlaWdodD0iMzIwIiBmaWxsPSIjRjBGMEYwIi8+Cjx0ZXh0IHg9IjE0MCIgeT0iMTY1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjOTk5IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiPkV2ZW50IFZpZGVvIDI8L3RleHQ+PC9zdmc+\' alt=\'Event Video 2\'/>'"
-					></video>
-				</div>
+	<!-- Ramka 2 -->
+	<div class="photo-frame">
+		<video
+			poster="videos/filmik2-poster.jpg"
+			data-src="videos/filmik2.webm"
+			data-start-time="3"
+			class="video-lazy"
+			muted
+			loop
+			playsinline
+			preload="none"
+			onerror="this.outerHTML='<img decoding=\"async\" loading=\"lazy\" src=\"data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjgwIiBoZWlnaHQ9IjMyMCIgdmlld0JveD0iMCAwIDI4MCAzMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyODAiIGhlaWdodD0iMzIwIiBmaWxsPSIjRjBGMEYwIi8+Cjx0ZXh0IHg9IjE0MCIgeT0iMTY1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjOTk5IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiPkV2ZW50IFZpZGVvIDI8L3RleHQ+PC9zdmc+\" alt=\"Event Video 2\"/>'"
+		></video>
+	</div>
 
-				<!-- Ramka 3 -->
-				<div class="photo-frame">
-					<video preload="metadata"
-						src="videos/filmik3.webm"
-						alt="Event video 3"
-						autoplay
-						muted
-						loop
-						playsinline
-						data-start-time="2"
-						onerror="this.outerHTML='<img decoding="async" loading="lazy" src=\'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjgwIiBoZWlnaHQ9IjMyMCIgdmlld0JveD0iMCAwIDI4MCAzMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyODAiIGhlaWdodD0iMzIwIiBmaWxsPSIjRjBGMEYwIi8+Cjx0ZXh0IHg9IjE0MCIgeT0iMTY1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjOTk5IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiPkV2ZW50IFZpZGVvIDM8L3RleHQ+PC9zdmc+\' alt=\'Event Video 3\'/>'"
-					></video>
-				</div>
+	<!-- Ramka 3 -->
+	<div class="photo-frame">
+		<video
+			poster="videos/filmik3-poster.jpg"
+			data-src="videos/filmik3.webm"
+			data-start-time="2"
+			class="video-lazy"
+			muted
+			loop
+			playsinline
+			preload="none"
+			onerror="this.outerHTML='<img decoding=\"async\" loading=\"lazy\" src=\"data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjgwIiBoZWlnaHQ9IjMyMCIgdmlld0JveD0iMCAwIDI4MCAzMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyODAiIGhlaWdodD0iMzIwIiBmaWxsPSIjRjBGMEYwIi8+Cjx0ZXh0IHg9IjE0MCIgeT0iMTY1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjOTk5IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiPkV2ZW50IFZpZGVvIDM8L3RleHQ+PC9zdmc+\" alt=\"Event Video 3\"/>'"
+		></video>
+	</div>
 
-				<!-- Ramka 4 -->
-				<div class="photo-frame">
-					<video preload="metadata"
-						src="videos/filmik4.webm"
-						alt="Event video 4"
-						autoplay
-						muted
-						loop
-						playsinline
-						data-start-time="4"
-						onerror="this.outerHTML='<img decoding="async" loading="lazy" src=\'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjgwIiBoZWlnaHQ9IjMyMCIgdmlld0JveD0iMCAwIDI4MCAzMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyODAiIGhlaWdodD0iMzIwIiBmaWxsPSIjRjBGMEYwIi8+Cjx0ZXh0IHg9IjE0MCIgeT0iMTY1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjOTk5IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiPkV2ZW50IFZpZGVvIDQ8L3RleHQ+PC9zdmc+\' alt=\'Event Video 4\'/>'"
-					></video>
-				</div>
-			</div>
+	<!-- Ramka 4 -->
+	<div class="photo-frame">
+		<video
+			poster="videos/filmik4-poster.jpg"
+			data-src="videos/filmik4.webm"
+			data-start-time="4"
+			class="video-lazy"
+			muted
+			loop
+			playsinline
+			preload="none"
+			onerror="this.outerHTML='<img decoding=\"async\" loading=\"lazy\" src=\"data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjgwIiBoZWlnaHQ9IjMyMCIgdmlld0JveD0iMCAwIDI4MCAzMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyODAiIGhlaWdodD0iMzIwIiBmaWxsPSIjRjBGMEYwIi8+Cjx0ZXh0IHg9IjE0MCIgeT0iMTY1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjOTk5IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiPkV2ZW50IFZpZGVvIDQ8L3RleHQ+PC9zdmc+\" alt=\"Event Video 4\"/>'"
+		></video>
+	</div>
+</div>
 
             
 		</main>

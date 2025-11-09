@@ -1381,3 +1381,41 @@ document.addEventListener("DOMContentLoaded", function () {
 		}
 	}, 1000);
 });
+
+// === OPTYMALIZACJA ŁADOWANIA WIDEO ===
+// Sekwencyjne ładowanie: 1 → 2 → 3 → 4
+document.addEventListener("DOMContentLoaded", function () {
+	const videos = document.querySelectorAll(".video-lazy");
+	let currentIndex = 0;
+
+	function loadNextVideo() {
+		if (currentIndex >= videos.length) return;
+
+		const video = videos[currentIndex];
+		const src = video.dataset.src;
+		const startTime = parseFloat(video.dataset.startTime) || 0;
+
+		// Ustaw src i załaduj
+		video.src = src;
+		video.load();
+
+		// Po załadowaniu danych → odtwarzaj + przejdź do następnego
+		video.onloadeddata = () => {
+			video.currentTime = startTime;
+			video.play().catch(() => {}); // ignoruj błędy autoplay
+			currentIndex++;
+			loadNextVideo();
+		};
+
+		// Fallback: jeśli nie załaduje się w 8s → przejdź dalej
+		setTimeout(() => {
+			if (video.readyState < 3) {
+				currentIndex++;
+				loadNextVideo();
+			}
+		}, 8000);
+	}
+
+	// Start po załadowaniu DOM i po wyświetleniu posterów
+	loadNextVideo();
+});
