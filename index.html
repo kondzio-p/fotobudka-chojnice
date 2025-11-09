@@ -8,7 +8,10 @@
 			content="Zajmiemy się atrakcjami na Twojej imprezie! Profesjonalne usługi eventowe w Chojnicach i okolicach. Oferujemy fotobudkę 360°, fotolustro, ciężki dym, fontanny iskier i neony LED. Tworzymy niezapomniane pamiątki z wesel, imprez firmowych i urodzin."
 		/>
 		<meta name="theme-color" content="#eec9d2" />
-		<title>Fotobudka Chojnice | OG Events – 360° , Fotolustro, Dym | Wesela Pomorskie</title>
+		<title>
+			Fotobudka Chojnice | OG Events – 360° , Fotolustro, Dym | Wesela
+			Pomorskie
+		</title>
 		<link
 			rel="icon"
 			type="image/png"
@@ -43,7 +46,7 @@
 			type="video/webm"
 		/>
 
-        <link
+		<link
 			rel="preload"
 			href="videos/filmik3.webm"
 			as="video"
@@ -56,60 +59,85 @@
 			type="video/webm"
 		/>
 
+		<!-- Preload fontów -->
+		<link
+			rel="preload"
+			href="fonts/poppins/Poppins-Regular.ttf"
+			as="font"
+			type="font/ttf"
+			crossorigin
+		/>
+		<link
+			rel="preload"
+			href="fonts/poppins/Poppins-Bold.ttf"
+			as="font"
+			type="font/ttf"
+			crossorigin
+		/>
+		<link
+			rel="preload"
+			href="fonts/poppins/Poppins-Medium.ttf"
+			as="font"
+			type="font/ttf"
+			crossorigin
+		/>
+		<link
+			rel="preload"
+			href="fonts/poppins/Poppins-Light.ttf"
+			as="font"
+			type="font/ttf"
+			crossorigin
+		/>
 
-        <!-- Preload fontów -->
-        <link rel="preload" href="fonts/poppins/Poppins-Regular.ttf" as="font" type="font/ttf" crossorigin>
-        <link rel="preload" href="fonts/poppins/Poppins-Bold.ttf" as="font" type="font/ttf" crossorigin>
-        <link rel="preload" href="fonts/poppins/Poppins-Medium.ttf" as="font" type="font/ttf" crossorigin>
-        <link rel="preload" href="fonts/poppins/Poppins-Light.ttf" as="font" type="font/ttf" crossorigin>
-
-        <!-- Preload dodatkowych obrazów (logo, tło, SVG) -->
-        <link rel="preload" href="images/og-events-logo-white.png" as="image">
-        <link rel="preload" href="images/bgKamien.webp" as="image">
-        <link rel="preload" href="images/bgKamien.jpg" as="image">
-        <link rel="preload" href="images/fb.svg" as="image">
-        <link rel="preload" href="images/insta.svg" as="image">
-        <link rel="preload" href="images/phone.svg" as="image">
+		<!-- Preload dodatkowych obrazów (logo, tło, SVG) -->
+		<link rel="preload" href="images/og-events-logo-white.png" as="image" />
+		<link rel="preload" href="images/bgKamien.webp" as="image" />
+		<link rel="preload" href="images/bgKamien.jpg" as="image" />
+		<link rel="preload" href="images/fb.svg" as="image" />
+		<link rel="preload" href="images/insta.svg" as="image" />
+		<link rel="preload" href="images/phone.svg" as="image" />
 
 		<!-- Removed video preloads to avoid browser warnings for unsupported `as` in some contexts -->
-         <!-- Schema LocalBusiness + FAQ (dla AI) -->
-        <script type="application/ld+json">
-        {
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "OG Events - Fotobudka Chojnice",
-        "description": "Fotobudka 360, fotolustro, ciężki dym na wesela w Chojnicach, okolicach i Pomorskim",
-        "url": "https://fotobudka-chojnice.pl",
-        "telephone": "576 934 594",
-        "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Chojnice",
-            "addressRegion": "Pomorskie"
-        },
-        "openingHours": "Mo-Fr 09:00-20:00"
-        }
-        </script>
-        <script type="application/ld+json">
-        {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [{
-            "@type": "Question",
-            "name": "Ile kosztuje fotobudka 360 w Chojnicach?",
-            "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Cenę naszych usług ustalamy indywidualnie w zależności od czasu wynajmu i dodatkowych usług. Skontaktuj się z nami, aby uzyskać wycenę."
-            }
-        }]
-        }
-        </script>
+		<!-- Schema LocalBusiness + FAQ (dla AI) -->
+		<script type="application/ld+json">
+			{
+				"@context": "https://schema.org",
+				"@type": "LocalBusiness",
+				"name": "OG Events - Fotobudka Chojnice",
+				"description": "Fotobudka 360, fotolustro, ciężki dym na wesela w Chojnicach, okolicach i Pomorskim",
+				"url": "https://fotobudka-chojnice.pl",
+				"telephone": "576 934 594",
+				"address": {
+					"@type": "PostalAddress",
+					"addressLocality": "Chojnice",
+					"addressRegion": "Pomorskie"
+				},
+				"openingHours": "Mo-Fr 09:00-20:00"
+			}
+		</script>
+		<script type="application/ld+json">
+			{
+				"@context": "https://schema.org",
+				"@type": "FAQPage",
+				"mainEntity": [
+					{
+						"@type": "Question",
+						"name": "Ile kosztuje fotobudka 360 w Chojnicach?",
+						"acceptedAnswer": {
+							"@type": "Answer",
+							"text": "Cenę naszych usług ustalamy indywidualnie w zależności od czasu wynajmu i dodatkowych usług. Skontaktuj się z nami, aby uzyskać wycenę."
+						}
+					}
+				]
+			}
+		</script>
 	</head>
 
-    <!-- Loader ekranu -->
-    <div id="page-loader" class="page-loader">
-    <div class="loader-spinner"></div>
-    <p>Ładowanie...</p>
-    </div>
+	<!-- Loader ekranu -->
+	<div id="page-loader" class="page-loader">
+		<div class="loader-spinner"></div>
+		<p>Ładowanie...</p>
+	</div>
 
 	<body>
 		<!-- Tło globalne -->
@@ -120,7 +148,9 @@
 			<div class="nav-container">
 				<!-- Logo i menu na desktopie -->
 				<div class="logo d-none d-md-block">
-					<img decoding="async" loading="lazy"
+					<img
+						decoding="async"
+						loading="lazy"
 						src="images/og-events-logo-white.png"
 						alt="OG Events Logo"
 						onerror="this.outerHTML='<div style=\'color: #8b4b7a; font-weight: bold; font-size: 24px;\'>OG<br><span style=\'font-size: 12px; font-weight: normal;\'>EVENT SPOT</span></div>'"
@@ -144,14 +174,24 @@
 						target="_blank"
 						class="social-icon facebook"
 						aria-label="Facebook"
-						><img decoding="async" loading="lazy" src="images/fb.svg" width="20px" alt=""
+						><img
+							decoding="async"
+							loading="lazy"
+							src="images/fb.svg"
+							width="20px"
+							alt=""
 					/></a>
 					<a
 						href="https://www.instagram.com/og.eventspot/"
 						target="_blank"
 						class="social-icon instagram"
 						aria-label="Instagram"
-						><img decoding="async" loading="lazy" src="images/insta.svg" width="25px" alt=""
+						><img
+							decoding="async"
+							loading="lazy"
+							src="images/insta.svg"
+							width="25px"
+							alt=""
 					/></a>
 				</div>
 
@@ -160,7 +200,9 @@
 					<!-- Górny pasek: logo + social media -->
 					<div class="header-top-row">
 						<div class="logo">
-							<img decoding="async" loading="lazy"
+							<img
+								decoding="async"
+								loading="lazy"
 								src="images/og-events-logo-white.png"
 								alt="OG Events Logo"
 								onerror="this.outerHTML='<div style=\'color: #8b4b7a; font-weight: bold; font-size: 18px;\'>OG<br><span style=\'font-size: 10px; font-weight: normal;\'>EVENT SPOT</span></div>'"
@@ -173,14 +215,21 @@
 								target="_blank"
 								class="social-icon facebook"
 								aria-label="Facebook"
-								><img decoding="async" loading="lazy" src="images/fb.svg" width="16px" alt=""
+								><img
+									decoding="async"
+									loading="lazy"
+									src="images/fb.svg"
+									width="16px"
+									alt=""
 							/></a>
 							<a
 								href="https://www.instagram.com/og.eventspot/"
 								target="_blank"
 								class="social-icon instagram"
 								aria-label="Instagram"
-								><img decoding="async" loading="lazy"
+								><img
+									decoding="async"
+									loading="lazy"
 									src="images/insta.svg"
 									width="18px"
 									alt=""
@@ -208,15 +257,15 @@
 				<!-- Ramka 1 -->
 				<div class="photo-frame">
 					<div class="video-container">
-						<video preload="metadata"
+						<video
+							preload="auto"
 							src="videos/filmik1s6.webm"
 							alt="Event video 1"
 							muted
 							loop
 							playsinline
-							data-start-time="6"
+							poster="videos/poster_filmik1.webp"
 							class="video-lazy"
-							onerror="this.outerHTML='<img decoding="async" loading="lazy" src=\'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjgwIiBoZWlnaHQ9IjMyMCIgdmlld0JveD0iMCAwIDI4MCAzMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyODAiIGhlaWdodD0iMzIwIiBmaWxsPSIjRjBGMEYwIi8+Cjx0ZXh0IHg9IjE0MCIgeT0iMTY1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjOTk5IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiPkV2ZW50IFZpZGVvIDE8L3RleHQ+PC9zdmc+\' alt=\'Event Video 1\'/>'"
 						></video>
 						<button class="play-pause-btn">▶</button>
 					</div>
@@ -225,15 +274,15 @@
 				<!-- Ramka 2 -->
 				<div class="photo-frame">
 					<div class="video-container">
-						<video preload="metadata"
+						<video
+							preload="auto"
 							src="videos/filmik2.webm"
 							alt="Event video 2"
 							muted
 							loop
 							playsinline
-							data-start-time="3"
+							poster="videos/poster_filmik2.webp"
 							class="video-lazy"
-							onerror="this.outerHTML='<img decoding="async" loading="lazy" src=\'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjgwIiBoZWlnaHQ9IjMyMCIgdmlld0JveD0iMCAwIDI4MCAzMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyODAiIGhlaWdodD0iMzIwIiBmaWxsPSIjRjBGMEYwIi8+Cjx0ZXh0IHg9IjE0MCIgeT0iMTY1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjOTk5IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiPkV2ZW50IFZpZGVvIDI8L3RleHQ+PC9zdmc+\' alt=\'Event Video 2\'/>'"
 						></video>
 						<button class="play-pause-btn">▶</button>
 					</div>
@@ -242,14 +291,15 @@
 				<!-- Ramka 3 -->
 				<div class="photo-frame">
 					<div class="video-container">
-						<video preload="metadata"
+						<video
+							preload="auto"
 							src="videos/filmik3.webm"
 							alt="Event video 3"
 							muted
 							loop
 							playsinline
-							data-start-time="2"
-							onerror="this.outerHTML='<img decoding="async" loading="lazy" src=\'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjgwIiBoZWlnaHQ9IjMyMCIgdmlld0JveD0iMCAwIDI4MCAzMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyODAiIGhlaWdodD0iMzIwIiBmaWxsPSIjRjBGMEYwIi8+Cjx0ZXh0IHg9IjE0MCIgeT0iMTY1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjOTk5IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiPkV2ZW50IFZpZGVvIDM8L3RleHQ+PC9zdmc+\' alt=\'Event Video 3\'/>'"
+							poster="videos/poster_filmik3.webp"
+							class="video-lazy"
 						></video>
 						<button class="play-pause-btn">▶</button>
 					</div>
@@ -258,21 +308,20 @@
 				<!-- Ramka 4 -->
 				<div class="photo-frame">
 					<div class="video-container">
-						<video preload="metadata"
+						<video
+							preload="auto"
 							src="videos/filmik4.webm"
 							alt="Event video 4"
 							muted
 							loop
 							playsinline
-							data-start-time="4"
-							onerror="this.outerHTML='<img decoding="async" loading="lazy" src=\'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjgwIiBoZWlnaHQ9IjMyMCIgdmlld0JveD0iMCAwIDI4MCAzMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyODAiIGhlaWdodD0iMzIwIiBmaWxsPSIjRjBGMEYwIi8+Cjx0ZXh0IHg9IjE0MCIgeT0iMTY1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjOTk5IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiPkV2ZW50IFZpZGVvIDQ8L3RleHQ+PC9zdmc+\' alt=\'Event Video 4\'/>'"
+							poster="videos/poster_filmik4.webp"
+							class="video-lazy"
 						></video>
 						<button class="play-pause-btn">▶</button>
 					</div>
 				</div>
 			</div>
-
-            
 		</main>
 
 		<!-- Sekcja powitalna (hero copy + CTA) -->
@@ -445,9 +494,7 @@
 		<!-- Sekcja: "My w liczbach" (statystyki) -->
 		<section
 			class="stats-section py-5"
-			style="
-				background: rgba(255, 255, 255, 0.95);
-			"
+			style="background: rgba(255, 255, 255, 0.95)"
 			id="stats"
 		>
 			<div class="container">
@@ -555,36 +602,62 @@
 			</div>
 		</section>
 
-        <!-- Sekcja FAQ -->
-        <section class="faq-section full-width" itemscope itemtype="https://schema.org/FAQPage">
-            <h2>Najczęściej zadawane pytania</h2>
+		<!-- Sekcja FAQ -->
+		<section
+			class="faq-section full-width"
+			itemscope
+			itemtype="https://schema.org/FAQPage"
+		>
+			<h2>Najczęściej zadawane pytania</h2>
 
-            <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                <details>
-                    <summary class="faq-question" itemprop="name">
-                        Ile kosztuje wynajem fotobudki 360° w Chojnicach?
-                    </summary>
-                    <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                        <p itemprop="text">
-                            Cenę naszych usług ustalamy indywidualnie w zależności od czasu wynajmu i dodatkowych usług. Skontaktuj się z nami, aby uzyskać wycenę.
-                        </p>
-                    </div>
-                </details>
-            </div>
+			<div
+				class="faq-item"
+				itemscope
+				itemprop="mainEntity"
+				itemtype="https://schema.org/Question"
+			>
+				<details>
+					<summary class="faq-question" itemprop="name">
+						Ile kosztuje wynajem fotobudki 360° w Chojnicach?
+					</summary>
+					<div
+						class="faq-answer"
+						itemscope
+						itemprop="acceptedAnswer"
+						itemtype="https://schema.org/Answer"
+					>
+						<p itemprop="text">
+							Cenę naszych usług ustalamy indywidualnie w
+							zależności od czasu wynajmu i dodatkowych usług.
+							Skontaktuj się z nami, aby uzyskać wycenę.
+						</p>
+					</div>
+				</details>
+			</div>
 
-            <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-                <details>
-                    <summary class="faq-question" itemprop="name">
-                        Czy dojeżdżacie poza Chojnice? (Gdańsk, Słupsk, itp.)
-                    </summary>
-                    <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                        <p itemprop="text">
-                            Tak! Obsługujemy miasta poza Chojnicami.
-                        </p>
-                    </div>
-                </details>
-            </div>
-        </section>
+			<div
+				class="faq-item"
+				itemscope
+				itemprop="mainEntity"
+				itemtype="https://schema.org/Question"
+			>
+				<details>
+					<summary class="faq-question" itemprop="name">
+						Czy dojeżdżacie poza Chojnice? (Gdańsk, Słupsk, itp.)
+					</summary>
+					<div
+						class="faq-answer"
+						itemscope
+						itemprop="acceptedAnswer"
+						itemtype="https://schema.org/Answer"
+					>
+						<p itemprop="text">
+							Tak! Obsługujemy miasta poza Chojnicami.
+						</p>
+					</div>
+				</details>
+			</div>
+		</section>
 
 		<!-- Sekcja galerii zdjęć (karuzela 3 obrazów) -->
 		<section
@@ -625,7 +698,8 @@
 					<!-- Lista slajdów w karuzeli -->
 					<div class="image-carousel">
 						<div class="image-slide image-slide-left">
-							<img decoding="async"
+							<img
+								decoding="async"
 								data-src="images/360.png"
 								alt="Gallery image"
 								loading="lazy"
@@ -633,7 +707,8 @@
 							/>
 						</div>
 						<div class="image-slide image-slide-center active">
-							<img decoding="async"
+							<img
+								decoding="async"
 								data-src="images/mirror.jpg"
 								alt="Gallery image"
 								loading="lazy"
@@ -641,7 +716,8 @@
 							/>
 						</div>
 						<div class="image-slide image-slide-right">
-							<img decoding="async"
+							<img
+								decoding="async"
 								data-src="images/heavysmoke.jpg"
 								alt="Gallery image"
 								loading="lazy"
@@ -802,7 +878,9 @@
 										margin-right: 20px;
 									"
 								>
-									<img decoding="async" loading="lazy"
+									<img
+										decoding="async"
+										loading="lazy"
 										src="images/fb.svg"
 										alt="Facebook"
 										style="width: 32px; height: 32px"
@@ -843,7 +921,9 @@
 										margin-right: 20px;
 									"
 								>
-									<img decoding="async" loading="lazy"
+									<img
+										decoding="async"
+										loading="lazy"
 										src="images/insta.svg"
 										alt="Instagram"
 										style="width: 32px; height: 32px"
@@ -884,7 +964,9 @@
 										margin-right: 20px;
 									"
 								>
-									<img decoding="async" loading="lazy"
+									<img
+										decoding="async"
+										loading="lazy"
 										src="images/phone.svg"
 										alt="Phone"
 										style="width: 32px; height: 32px"
@@ -1005,8 +1087,8 @@
 		<script>
 			const lenis = new Lenis();
 			function raf(time) {
-			  lenis.raf(time);
-			  requestAnimationFrame(raf);
+				lenis.raf(time);
+				requestAnimationFrame(raf);
 			}
 			requestAnimationFrame(raf);
 		</script>

@@ -143,20 +143,73 @@
 			}
 		}
 
-		function loadImageSafely(imgEl, src, alt) {
-			if (!imgEl) return;
-			imgEl.onload = () => imgEl.classList.add("loaded");
-			imgEl.onerror = () => {
-				console.warn("Failed to load image:", src);
-				imgEl.src =
-					"data:image/svg+xml;base64," +
-					btoa(
-						'<svg width="300" height="200" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" fill="#f0f0f0"/><text x="50%" y="50%" font-family="Arial" font-size="14" fill="#999" text-anchor="middle" dy=".3em">Image not found</text></svg>'
-					);
-				imgEl.classList.add("loaded");
+		// Simple lazy loading without WebP conversion
+		function loadMediaSafely(media) {
+			if (!media.dataset.src) return;
+
+			media.onload = function () {
+				media.classList.add("loaded");
 			};
-			imgEl.src = src;
-			if (typeof alt !== "undefined") imgEl.alt = alt;
+
+			media.onerror = function () {
+				console.warn("Failed to load media:", media.dataset.src);
+				// Fallback placeholder (dla wideo możesz dodać poster lub komunikat)
+				if (media.tagName === "VIDEO") {
+					media.poster =
+						"data:image/svg+xml;base64," +
+						btoa(
+							'<svg width="300" height="200" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" fill="#f0f0f0"/><text x="50%" y="50%" font-family="Arial" font-size="14" fill="#999" text-anchor="middle" dy=".3em">Wideo niedostępne</text></svg>'
+						);
+				} else {
+					media.src =
+						"data:image/svg+xml;base64," +
+						btoa(
+							'<svg width="300" height="200" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" fill="#f0f0f0"/><text x="50%" y="50%" font-family="Arial" font-size="14" fill="#999" text-anchor="middle" dy=".3em">Obraz niedostępny</text></svg>'
+						);
+				}
+				media.classList.add("loaded", "error");
+			};
+
+			media.src = media.dataset.src;
+			if (media.tagName === "VIDEO") {
+				media.load(); // Wymuś załadowanie dla wideo
+			}
+		}
+
+		// Intersection Observer for lazy loading
+		if ("IntersectionObserver" in window) {
+			const mediaObserver = new IntersectionObserver(
+				(entries, observer) => {
+					entries.forEach((entry) => {
+						if (entry.isIntersecting) {
+							const media = entry.target;
+							loadMediaSafely(media);
+							observer.unobserve(media);
+						}
+					});
+				},
+				{
+					rootMargin: "50px 0px",
+					threshold: 0.1,
+				}
+			);
+
+			document.addEventListener("DOMContentLoaded", function () {
+				document
+					.querySelectorAll("img[data-src], video[data-src]")
+					.forEach((media) => {
+						// Add loading class for CSS styling
+						media.classList.add("lazy-loading");
+						mediaObserver.observe(media);
+					});
+			});
+		} else {
+			// Fallback for older browsers
+			document.addEventListener("DOMContentLoaded", function () {
+				document
+					.querySelectorAll("img[data-src], video[data-src]")
+					.forEach(loadMediaSafely);
+			});
 		}
 
 		function updateCarousel() {
@@ -1339,6 +1392,88 @@
 		Gallery.init();
 		Lightbox.init();
 		// Note: video controls and animations were self-initializing above
+	});
+
+	document.addEventListener("DOMContentLoaded", function () {
+		const videos = document.querySelectorAll(".video-container video");
+
+		videos.forEach((video) => {
+			const btn = video.nextElementSibling;
+
+			// Obsługa przycisku play/pause
+			btn.addEventListener("click", () => {
+				if (video.paused) {
+					video.play();
+					btn.textContent = "⏸";
+				} else {
+					video.pause();
+					btn.textContent = "▶";
+				}
+			});
+
+			// Fallback jeśli video się nie załaduje
+			video.onerror = () => {
+				const posterSrc = video.getAttribute("poster");
+				const img = document.createElement("img");
+				img.src = posterSrc;
+				img.alt = video.getAttribute("alt") || "Event video";
+				video.parentNode.replaceChild(img, video);
+			};
+		});
+	});
+
+	// Obsługa przycisków play/pause dla wszystkich wideo
+	document.addEventListener("DOMContentLoaded", function () {
+		const videoContainers = document.querySelectorAll(".video-container");
+
+		videoContainers.forEach((container) => {
+			const video = container.querySelector("video");
+			const btn = container.querySelector(".play-pause-btn");
+
+			// Czekaj aż wideo będzie gotowe do play (zapobiega jednej klatce)
+			video.addEventListener("canplay", () => {
+				btn.disabled = false; // Aktywuj przycisk gdy gotowe
+				btn.style.opacity = 1; // Pokaż przycisk w pełni
+			});
+
+			// Manualny loop: Jeśli wideo skończy, rewind i play again
+			video.addEventListener("ended", () => {
+				video.currentTime = 0; // Przewiń do początku
+				video.play(); // Odtwórz ponownie
+			});
+
+			// Obsługa kliknięcia przycisku
+			btn.addEventListener("click", () => {
+				if (video.paused || video.ended) {
+					video
+						.play()
+						.then(() => {
+							btn.textContent = "❚❚"; // Symbol pause
+							btn.classList.add("playing");
+						})
+						.catch((error) => {
+							console.error("Błąd odtwarzania:", error);
+							// Fallback: Reload i play
+							video.load();
+							video.play();
+						});
+				} else {
+					video.pause();
+					btn.textContent = "▶"; // Symbol play
+					btn.classList.remove("playing");
+				}
+			});
+
+			// Opcjonalnie: Ukryj przycisk po starcie (jeśli chcesz auto-hide)
+			video.addEventListener("play", () => {
+				setTimeout(() => {
+					btn.style.opacity = 0;
+				}, 2000); // Ukryj po 2s
+			});
+			video.addEventListener("pause", () => {
+				btn.style.opacity = 1;
+			});
+		});
 	});
 
 	// expose safe API for external usage if needed

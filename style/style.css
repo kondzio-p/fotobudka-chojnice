@@ -271,6 +271,8 @@ body {
 	cursor: pointer;
 	transition: background 0.3s ease, transform 0.3s ease;
 	z-index: 5;
+	opacity: 1;
+	transition: opacity 0.3s ease, background 0.3s ease;
 }
 
 .play-pause-btn:hover {
@@ -281,6 +283,18 @@ body {
 .play-pause-btn:focus {
 	outline: none;
 	box-shadow: 0 0 0 3px rgba(128, 16, 57, 0.5);
+}
+
+.play-pause-btn.playing {
+	background: rgba(128, 16, 57, 0.5); /* Półprzezroczysty podczas grania */
+	opacity: 0.7; /* Lekko ukryty */
+}
+
+.video-lazy:not(.loaded) {
+	background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+	background-size: 200% 100%;
+	animation: loading 1.5s infinite;
+	min-height: 320px; /* Zapobiegaj layout shift */
 }
 
 /* ===== SEKCJA POWITALNA / OFERTY ===== */
