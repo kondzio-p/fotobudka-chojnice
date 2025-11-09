@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://fotobudka-chojnice.pl/sitemap.xml
