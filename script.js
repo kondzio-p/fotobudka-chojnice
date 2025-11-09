@@ -728,54 +728,6 @@ document.addEventListener("DOMContentLoaded", function () {
 		},
 	});
 
-	// Footer contact items animation
-	gsap.timeline({
-		scrollTrigger: {
-			trigger: "#contact",
-			start: "top center+=200",
-			toggleActions: "play none none reverse",
-		},
-	})
-		.to(".contact-item", {
-			opacity: 1,
-			x: 0,
-			duration: 0.8,
-			stagger: 0.2,
-			ease: "back.out(1.4)",
-		})
-		.from(
-			".contact-item img",
-			{
-				rotation: 360,
-				scale: 0,
-				duration: 0.6,
-				stagger: 0.15,
-				ease: "back.out(1.7)",
-			},
-			"-=0.6"
-		);
-
-	// Hover animations for interactive elements
-	document.querySelectorAll(".offer-card").forEach((card) => {
-		card.addEventListener("mouseenter", () => {
-			gsap.to(card, {
-				scale: 1.03,
-				y: -10,
-				duration: 0.4,
-				ease: "power2.out",
-			});
-		});
-
-		card.addEventListener("mouseleave", () => {
-			gsap.to(card, {
-				scale: 1,
-				y: 0,
-				duration: 0.4,
-				ease: "power2.out",
-			});
-		});
-	});
-
 	// Initialize dynamic gallery and carousel
 	initializeGallery();
 	updateCarousel();
@@ -1383,7 +1335,6 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // === OPTYMALIZACJA ŁADOWANIA WIDEO ===
-// Sekwencyjne ładowanie: 1 → 2 → 3 → 4
 document.addEventListener("DOMContentLoaded", function () {
 	const videos = document.querySelectorAll(".video-lazy");
 	let currentIndex = 0;
@@ -1395,19 +1346,16 @@ document.addEventListener("DOMContentLoaded", function () {
 		const src = video.dataset.src;
 		const startTime = parseFloat(video.dataset.startTime) || 0;
 
-		// Ustaw src i załaduj
 		video.src = src;
 		video.load();
 
-		// Po załadowaniu danych → odtwarzaj + przejdź do następnego
 		video.onloadeddata = () => {
 			video.currentTime = startTime;
-			video.play().catch(() => {}); // ignoruj błędy autoplay
+			video.play().catch(() => {});
 			currentIndex++;
 			loadNextVideo();
 		};
 
-		// Fallback: jeśli nie załaduje się w 8s → przejdź dalej
 		setTimeout(() => {
 			if (video.readyState < 3) {
 				currentIndex++;
@@ -1416,6 +1364,22 @@ document.addEventListener("DOMContentLoaded", function () {
 		}, 8000);
 	}
 
-	// Start po załadowaniu DOM i po wyświetleniu posterów
 	loadNextVideo();
+
+	// Intersection Observer for pausing offscreen videos
+	const videoObserver = new IntersectionObserver(
+		(entries) => {
+			entries.forEach((entry) => {
+				const video = entry.target;
+				if (entry.isIntersecting) {
+					video.play().catch(() => {});
+				} else {
+					video.pause();
+				}
+			});
+		},
+		{ threshold: 0.1 }
+	);
+
+	videos.forEach((video) => videoObserver.observe(video));
 });
