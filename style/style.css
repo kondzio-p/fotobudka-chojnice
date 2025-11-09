@@ -1913,7 +1913,7 @@ details[open] .faq-answer {
 	}
 	.faq-question {
 		font-size: 17px;
-		padding: 14px 20px;
+		padding: 18px 60px 18px 24px;
 	}
 	.faq-question::after {
 		right: 20px;
