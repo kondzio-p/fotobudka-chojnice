@@ -23,63 +23,93 @@
 		<!-- Custom CSS -->
 		<link rel="stylesheet" href="style/style.css" />
 
-		<!-- Preload ważnych obrazów -->
+		<!-- Preload ważnych obrazów i filmów -->
 		<link rel="preload" href="images/360.png" as="image" />
 		<link rel="preload" href="images/mirror.jpg" as="image" />
 		<link rel="preload" href="images/heavysmoke.jpg" as="image" />
 		<link rel="preload" href="images/fountain.jpg" as="image" />
 		<link rel="preload" href="images/neons.jpg" as="image" />
 
-		<link rel="preload" href="fonts/poppins/Poppins-Regular.ttf" as="font" type="font/ttf" crossorigin>
-		<link rel="preload" href="fonts/poppins/Poppins-Bold.ttf" as="font" type="font/ttf" crossorigin>
-		<link rel="preload" href="fonts/poppins/Poppins-Medium.ttf" as="font" type="font/ttf" crossorigin>
-		<link rel="preload" href="fonts/poppins/Poppins-Light.ttf" as="font" type="font/ttf" crossorigin>
+		<link
+			rel="preload"
+			href="videos/filmik1s6.webm"
+			as="video"
+			type="video/webm"
+		/>
+		<link
+			rel="preload"
+			href="videos/filmik2.webm"
+			as="video"
+			type="video/webm"
+		/>
 
-		<link rel="preload" href="images/og-events-logo-white.png" as="image">
-		<link rel="preload" href="images/bgKamien.webp" as="image">
-		<link rel="preload" href="images/bgKamien.jpg" as="image">
-		<link rel="preload" href="images/fb.svg" as="image">
-		<link rel="preload" href="images/insta.svg" as="image">
-		<link rel="preload" href="images/phone.svg" as="image">
+        <link
+			rel="preload"
+			href="videos/filmik3.webm"
+			as="video"
+			type="video/webm"
+		/>
+		<link
+			rel="preload"
+			href="videos/filmik4.webm"
+			as="video"
+			type="video/webm"
+		/>
 
-		<!-- Schema LocalBusiness + FAQ -->
-		<script type="application/ld+json">
-		{
-		"@context": "https://schema.org",
-		"@type": "LocalBusiness",
-		"name": "OG Events - Fotobudka Chojnice",
-		"description": "Fotobudka 360, fotolustro, ciężki dym na wesela w Chojnicach, okolicach i Pomorskim",
-		"url": "https://fotobudka-chojnice.pl",
-		"telephone": "576 934 594",
-		"address": {
-			"@type": "PostalAddress",
-			"addressLocality": "Chojnice",
-			"addressRegion": "Pomorskie"
-		},
-		"openingHours": "Mo-Fr 09:00-20:00"
-		}
-		</script>
-		<script type="application/ld+json">
-		{
-		"@context": "https://schema.org",
-		"@type": "FAQPage",
-		"mainEntity": [{
-			"@type": "Question",
-			"name": "Ile kosztuje fotobudka 360 w Chojnicach?",
-			"acceptedAnswer": {
-			"@type": "Answer",
-			"text": "Cenę naszych usług ustalamy indywidualnie w zależności od czasu wynajmu i dodatkowych usług. Skontaktuj się z nami, aby uzyskać wycenę."
-			}
-		}]
-		}
-		</script>
+
+        <!-- Preload fontów -->
+        <link rel="preload" href="fonts/poppins/Poppins-Regular.ttf" as="font" type="font/ttf" crossorigin>
+        <link rel="preload" href="fonts/poppins/Poppins-Bold.ttf" as="font" type="font/ttf" crossorigin>
+        <link rel="preload" href="fonts/poppins/Poppins-Medium.ttf" as="font" type="font/ttf" crossorigin>
+        <link rel="preload" href="fonts/poppins/Poppins-Light.ttf" as="font" type="font/ttf" crossorigin>
+
+        <!-- Preload dodatkowych obrazów (logo, tło, SVG) -->
+        <link rel="preload" href="images/og-events-logo-white.png" as="image">
+        <link rel="preload" href="images/bgKamien.webp" as="image">
+        <link rel="preload" href="images/bgKamien.jpg" as="image">
+        <link rel="preload" href="images/fb.svg" as="image">
+        <link rel="preload" href="images/insta.svg" as="image">
+        <link rel="preload" href="images/phone.svg" as="image">
+
+		<!-- Removed video preloads to avoid browser warnings for unsupported `as` in some contexts -->
+         <!-- Schema LocalBusiness + FAQ (dla AI) -->
+        <script type="application/ld+json">
+        {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "OG Events - Fotobudka Chojnice",
+        "description": "Fotobudka 360, fotolustro, ciężki dym na wesela w Chojnicach, okolicach i Pomorskim",
+        "url": "https://fotobudka-chojnice.pl",
+        "telephone": "576 934 594",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Chojnice",
+            "addressRegion": "Pomorskie"
+        },
+        "openingHours": "Mo-Fr 09:00-20:00"
+        }
+        </script>
+        <script type="application/ld+json">
+        {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [{
+            "@type": "Question",
+            "name": "Ile kosztuje fotobudka 360 w Chojnicach?",
+            "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Cenę naszych usług ustalamy indywidualnie w zależności od czasu wynajmu i dodatkowych usług. Skontaktuj się z nami, aby uzyskać wycenę."
+            }
+        }]
+        }
+        </script>
 	</head>
 
-	<!-- Loader ekranu -->
-	<div id="page-loader" class="page-loader">
-	<div class="loader-spinner"></div>
-	<p>Ładowanie...</p>
-	</div>
+    <!-- Loader ekranu -->
+    <div id="page-loader" class="page-loader">
+    <div class="loader-spinner"></div>
+    <p>Ładowanie...</p>
+    </div>
 
 	<body>
 		<!-- Tło globalne -->
@@ -174,68 +204,67 @@
 
 		<!-- Główna część strony -->
 		<main class="main-content">
-			<!-- Sekcja photo-gallery z video -->
 			<div class="photo-gallery">
 				<!-- Ramka 1 -->
 				<div class="photo-frame">
-					<video
-						poster="videos/filmik1-poster.jpg"
-						data-src="videos/filmik1s6.webm"
-						data-start-time="6"
-						class="video-lazy"
+					<video preload="metadata"
+						src="videos/filmik1s6.webm"
+						alt="Event video 1"
+						autoplay
 						muted
 						loop
 						playsinline
-						preload="none"
-						onerror="this.outerHTML='<img decoding=\"async\" loading=\"lazy\" src=\"data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjgwIiBoZWlnaHQ9IjMyMCIgdmlld0JveD0iMCAwIDI4MCAzMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyODAiIGhlaWdodD0iMzIwIiBmaWxsPSIjRjBGMEYwIi8+Cjx0ZXh0IHg9IjE0MCIgeT0iMTY1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjOTk5IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiPkV2ZW50IFZpZGVvIDE8L3RleHQ+PC9zdmc+\" alt=\"Event Video 1\"/>'"
+						data-start-time="6"
+						class="video-lazy"
+						onerror="this.outerHTML='<img decoding="async" loading="lazy" src=\'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjgwIiBoZWlnaHQ9IjMyMCIgdmlld0JveD0iMCAwIDI4MCAzMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyODAiIGhlaWdodD0iMzIwIiBmaWxsPSIjRjBGMEYwIi8+Cjx0ZXh0IHg9IjE0MCIgeT0iMTY1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjOTk5IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiPkV2ZW50IFZpZGVvIDE8L3RleHQ+PC9zdmc+\' alt=\'Event Video 1\'/>'"
 					></video>
 				</div>
 
 				<!-- Ramka 2 -->
 				<div class="photo-frame">
-					<video
-						poster="videos/filmik2-poster.jpg"
-						data-src="videos/filmik2.webm"
-						data-start-time="3"
-						class="video-lazy"
+					<video preload="metadata"
+						src="videos/filmik2.webm"
+						alt="Event video 2"
+						autoplay
 						muted
 						loop
 						playsinline
-						preload="none"
-						onerror="this.outerHTML='<img decoding=\"async\" loading=\"lazy\" src=\"data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjgwIiBoZWlnaHQ9IjMyMCIgdmlld0JveD0iMCAwIDI4MCAzMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyODAiIGhlaWdodD0iMzIwIiBmaWxsPSIjRjBGMEYwIi8+Cjx0ZXh0IHg9IjE0MCIgeT0iMTY1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjOTk5IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiPkV2ZW50IFZpZGVvIDI8L3RleHQ+PC9zdmc+\" alt=\"Event Video 2\"/>'"
+						data-start-time="3"
+						class="video-lazy"
+						onerror="this.outerHTML='<img decoding="async" loading="lazy" src=\'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjgwIiBoZWlnaHQ9IjMyMCIgdmlld0JveD0iMCAwIDI4MCAzMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyODAiIGhlaWdodD0iMzIwIiBmaWxsPSIjRjBGMEYwIi8+Cjx0ZXh0IHg9IjE0MCIgeT0iMTY1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjOTk5IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiPkV2ZW50IFZpZGVvIDI8L3RleHQ+PC9zdmc+\' alt=\'Event Video 2\'/>'"
 					></video>
 				</div>
 
 				<!-- Ramka 3 -->
 				<div class="photo-frame">
-					<video
-						poster="videos/filmik3-poster.jpg"
-						data-src="videos/filmik3.webm"
-						data-start-time="2"
-						class="video-lazy"
+					<video preload="metadata"
+						src="videos/filmik3.webm"
+						alt="Event video 3"
+						autoplay
 						muted
 						loop
 						playsinline
-						preload="none"
-						onerror="this.outerHTML='<img decoding=\"async\" loading=\"lazy\" src=\"data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjgwIiBoZWlnaHQ9IjMyMCIgdmlld0JveD0iMCAwIDI4MCAzMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyODAiIGhlaWdodD0iMzIwIiBmaWxsPSIjRjBGMEYwIi8+Cjx0ZXh0IHg9IjE0MCIgeT0iMTY1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjOTk5IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiPkV2ZW50IFZpZGVvIDM8L3RleHQ+PC9zdmc+\" alt=\"Event Video 3\"/>'"
+						data-start-time="2"
+						onerror="this.outerHTML='<img decoding="async" loading="lazy" src=\'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjgwIiBoZWlnaHQ9IjMyMCIgdmlld0JveD0iMCAwIDI4MCAzMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyODAiIGhlaWdodD0iMzIwIiBmaWxsPSIjRjBGMEYwIi8+Cjx0ZXh0IHg9IjE0MCIgeT0iMTY1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjOTk5IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiPkV2ZW50IFZpZGVvIDM8L3RleHQ+PC9zdmc+\' alt=\'Event Video 3\'/>'"
 					></video>
 				</div>
 
 				<!-- Ramka 4 -->
 				<div class="photo-frame">
-					<video
-						poster="videos/filmik4-poster.jpg"
-						data-src="videos/filmik4.webm"
-						data-start-time="4"
-						class="video-lazy"
+					<video preload="metadata"
+						src="videos/filmik4.webm"
+						alt="Event video 4"
+						autoplay
 						muted
 						loop
 						playsinline
-						preload="none"
-						onerror="this.outerHTML='<img decoding=\"async\" loading=\"lazy\" src=\"data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjgwIiBoZWlnaHQ9IjMyMCIgdmlld0JveD0iMCAwIDI4MCAzMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyODAiIGhlaWdodD0iMzIwIiBmaWxsPSIjRjBGMEYwIi8+Cjx0ZXh0IHg9IjE0MCIgeT0iMTY1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjOTk5IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiPkV2ZW50IFZpZGVvIDQ8L3RleHQ+PC9zdmc+\" alt=\"Event Video 4\"/>'"
+						data-start-time="4"
+						onerror="this.outerHTML='<img decoding="async" loading="lazy" src=\'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjgwIiBoZWlnaHQ9IjMyMCIgdmlld0JveD0iMCAwIDI4MCAzMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyODAiIGhlaWdodD0iMzIwIiBmaWxsPSIjRjBGMEYwIi8+Cjx0ZXh0IHg9IjE0MCIgeT0iMTY1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjOTk5IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiPkV2ZW50IFZpZGVvIDQ8L3RleHQ+PC9zdmc+\' alt=\'Event Video 4\'/>'"
 					></video>
 				</div>
 			</div>
+
+            
 		</main>
 
 		<!-- Sekcja powitalna (hero copy + CTA) -->
@@ -518,36 +547,36 @@
 			</div>
 		</section>
 
-		<!-- Sekcja FAQ -->
-		<section class="faq-section full-width" itemscope itemtype="https://schema.org/FAQPage">
-			<h2>Najczęściej zadawane pytania</h2>
+        <!-- Sekcja FAQ -->
+        <section class="faq-section full-width" itemscope itemtype="https://schema.org/FAQPage">
+            <h2>Najczęściej zadawane pytania</h2>
 
-			<div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-				<details>
-					<summary class="faq-question" itemprop="name">
-						Ile kosztuje wynajem fotobudki 360° w Chojnicach?
-					</summary>
-					<div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-						<p itemprop="text">
-							Cenę naszych usług ustalamy indywidualnie w zależności od czasu wynajmu i dodatkowych usług. Skontaktuj się z nami, aby uzyskać wycenę.
-						</p>
-					</div>
-				</details>
-			</div>
+            <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                <details>
+                    <summary class="faq-question" itemprop="name">
+                        Ile kosztuje wynajem fotobudki 360° w Chojnicach?
+                    </summary>
+                    <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                        <p itemprop="text">
+                            Cenę naszych usług ustalamy indywidualnie w zależności od czasu wynajmu i dodatkowych usług. Skontaktuj się z nami, aby uzyskać wycenę.
+                        </p>
+                    </div>
+                </details>
+            </div>
 
-			<div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-				<details>
-					<summary class="faq-question" itemprop="name">
-						Czy dojeżdżacie poza Chojnice? (Gdańsk, Słupsk, itp.)
-					</summary>
-					<div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-						<p itemprop="text">
-							Tak! Obsługujemy miasta poza Chojnicami.
-						</p>
-					</div>
-				</details>
-			</div>
-		</section>
+            <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                <details>
+                    <summary class="faq-question" itemprop="name">
+                        Czy dojeżdżacie poza Chojnice? (Gdańsk, Słupsk, itp.)
+                    </summary>
+                    <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                        <p itemprop="text">
+                            Tak! Obsługujemy miasta poza Chojnicami.
+                        </p>
+                    </div>
+                </details>
+            </div>
+        </section>
 
 		<!-- Sekcja galerii zdjęć (karuzela 3 obrazów) -->
 		<section

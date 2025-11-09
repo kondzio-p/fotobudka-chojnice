@@ -728,6 +728,54 @@ document.addEventListener("DOMContentLoaded", function () {
 		},
 	});
 
+	// Footer contact items animation
+	gsap.timeline({
+		scrollTrigger: {
+			trigger: "#contact",
+			start: "top center+=200",
+			toggleActions: "play none none reverse",
+		},
+	})
+		.to(".contact-item", {
+			opacity: 1,
+			x: 0,
+			duration: 0.8,
+			stagger: 0.2,
+			ease: "back.out(1.4)",
+		})
+		.from(
+			".contact-item img",
+			{
+				rotation: 360,
+				scale: 0,
+				duration: 0.6,
+				stagger: 0.15,
+				ease: "back.out(1.7)",
+			},
+			"-=0.6"
+		);
+
+	// Hover animations for interactive elements
+	document.querySelectorAll(".offer-card").forEach((card) => {
+		card.addEventListener("mouseenter", () => {
+			gsap.to(card, {
+				scale: 1.03,
+				y: -10,
+				duration: 0.4,
+				ease: "power2.out",
+			});
+		});
+
+		card.addEventListener("mouseleave", () => {
+			gsap.to(card, {
+				scale: 1,
+				y: 0,
+				duration: 0.4,
+				ease: "power2.out",
+			});
+		});
+	});
+
 	// Initialize dynamic gallery and carousel
 	initializeGallery();
 	updateCarousel();
@@ -1332,133 +1380,4 @@ document.addEventListener("DOMContentLoaded", function () {
 			);
 		}
 	}, 1000);
-});
-
-// === OPTYMALIZACJA ŁADOWANIA WIDEO ===
-
-// Funkcja throttle do optymalizacji eventów
-function throttle(fn, limit) {
-	let lastCall = 0;
-	return function (...args) {
-		const now = Date.now();
-		if (now - lastCall >= limit) {
-			lastCall = now;
-			fn(...args);
-		}
-	};
-}
-
-// Lazy loading dla video (podobnie jak dla img, ale z video specifics)
-function loadVideoSafely(video) {
-	if (!video.dataset.src) return;
-
-	video.onloadstart = function () {
-		// Opcjonalnie: dodaj klasę loading
-	};
-
-	video.onloadeddata = function () {
-		video.classList.add("loaded");
-		// Ustaw start time jeśli podany
-		const startTime = parseFloat(video.dataset.startTime) || 0;
-		video.currentTime = startTime;
-		// Nie play tu - play tylko gdy aktywny
-	};
-
-	video.onerror = function () {
-		console.warn("Failed to load video:", video.dataset.src);
-		// Fallback to img jak w onerror
-		video.outerHTML = video.onerror
-			.toString()
-			.match(/this\.outerHTML='(.*?)'/)[1];
-	};
-
-	video.src = video.dataset.src;
-}
-
-// Intersection Observer dla lazy video
-if ("IntersectionObserver" in window) {
-	const videoObserver = new IntersectionObserver(
-		(entries, observer) => {
-			entries.forEach((entry) => {
-				if (entry.isIntersecting) {
-					const video = entry.target;
-					loadVideoSafely(video);
-					observer.unobserve(video);
-				}
-			});
-		},
-		{
-			rootMargin: "200px 0px", // Ładuj wcześniej na scroll
-			threshold: 0.1,
-		}
-	);
-
-	document.addEventListener("DOMContentLoaded", function () {
-		document.querySelectorAll("video[data-src]").forEach((video) => {
-			video.classList.add("lazy-loading");
-			videoObserver.observe(video);
-		});
-	});
-} else {
-	// Fallback
-	document.addEventListener("DOMContentLoaded", function () {
-		document.querySelectorAll("video[data-src]").forEach(loadVideoSafely);
-	});
-}
-
-// Zarządzanie odtwarzaniem video - tylko najbliższy środka
-const videos = document.querySelectorAll(".video-lazy");
-
-function getClosestToCenter() {
-	const viewportMidY = window.innerHeight / 2 + window.scrollY; // Absolutna pozycja środka viewport
-	let closest = null;
-	let minDist = Infinity;
-
-	videos.forEach((video) => {
-		const rect = video.getBoundingClientRect();
-		const videoMidY = window.scrollY + rect.top + rect.height / 2; // Absolutna pozycja środka video
-		const dist = Math.abs(videoMidY - viewportMidY);
-
-		// Sprawdź też czy w ogóle widoczny (częściowo)
-		if (
-			rect.bottom > 0 &&
-			rect.top < window.innerHeight &&
-			dist < minDist
-		) {
-			minDist = dist;
-			closest = video;
-		}
-	});
-
-	return closest;
-}
-
-function manageVideos() {
-	const activeVideo = getClosestToCenter();
-
-	videos.forEach((video) => {
-		if (video === activeVideo && video.src) {
-			// Tylko jeśli załadowany
-			video.play().catch((error) => {
-				console.warn("Autoplay blocked:", error);
-				// Opcjonalnie: pokaż play button lub coś, ale na muted/playsinline powinno działać
-			});
-		} else {
-			video.pause();
-			// Reset do start time, aby pokazać "poster-like" klatkę
-			const startTime = parseFloat(video.dataset.startTime) || 0;
-			if (video.currentTime !== startTime) {
-				video.currentTime = startTime;
-			}
-		}
-	});
-}
-
-// Event listeners z throttle
-const throttledManage = throttle(manageVideos, 100);
-
-window.addEventListener("scroll", throttledManage);
-window.addEventListener("resize", throttledManage);
-document.addEventListener("DOMContentLoaded", () => {
-	manageVideos(); // Initial check
 });
