@@ -1,5 +1,7 @@
+/* ===== PODSTAWOWE STYLE I CZCIONKI ===== */
 @font-face {
 	font-family: "Poppins";
+	/* Poprawiona ścieżka (style.css jest w katalogu style/) */
 	src: url("../fonts/poppins/Poppins-Regular.ttf");
 }
 
@@ -15,12 +17,14 @@ body {
 	position: relative;
 }
 
+/* Alternatywne rozwiązanie z div-em */
 #background-fixed {
 	position: fixed;
 	top: 0;
 	left: 0;
 	width: 100%;
 	height: 100%;
+	/* Poprawione ścieżki do obrazów (../images/...) */
 	background-image: url("../images/bgKamien.webp"),
 		url("../images/bgKamien.jpg");
 	background-size: cover;
@@ -420,16 +424,16 @@ body {
 	height: 400px;
 	position: relative;
 	overflow: hidden;
-	perspective: 1000px;
+	perspective: 1000px; /* Dodane dla efektów 3D */
 }
 
 .image-slide {
 	position: absolute;
-	transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Płynniejsze przejścia */
 	border-radius: 15px;
 	overflow: hidden;
 	box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-	transform-style: preserve-3d;
+	transform-style: preserve-3d; /* Dla efektów 3D */
 }
 
 .image-slide img {
@@ -437,8 +441,8 @@ body {
 	height: 100%;
 	object-fit: cover;
 	display: block;
-	transition: all 0.6s ease;
-	backface-visibility: hidden;
+	transition: all 0.6s ease; /* Dodane przejście dla obrazów */
+	backface-visibility: hidden; /* Zapobiega migotaniu podczas animacji */
 }
 
 .image-slide-left {
@@ -447,7 +451,7 @@ body {
 	left: 50px;
 	opacity: 0.6;
 	z-index: 1;
-	transform: perspective(1000px) rotateY(10deg) translateZ(-50px);
+	transform: perspective(1000px) rotateY(10deg) translateZ(-50px); /* Efekt 3D */
 }
 
 .image-slide-center {
@@ -455,7 +459,7 @@ body {
 	height: 350px;
 	opacity: 1;
 	z-index: 2;
-	box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+	box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3); /* Większy cień dla środkowego */
 }
 
 .image-slide-right {
@@ -464,12 +468,12 @@ body {
 	right: 50px;
 	opacity: 0.6;
 	z-index: 1;
-	transform: perspective(1000px) rotateY(-10deg) translateZ(-50px);
+	transform: perspective(1000px) rotateY(-10deg) translateZ(-50px); /* Efekt 3D */
 }
 
 /* Hover efekty dla slajdów */
 .image-slide:hover {
-	transform-origin: center;
+	transform-origin: center center;
 }
 
 .image-slide-left:hover {
@@ -490,7 +494,7 @@ body {
 	position: absolute;
 	top: 50%;
 	transform: translateY(-50%);
-	background: linear-gradient(135deg, #801039, #a01447);
+	background: linear-gradient(135deg, #801039, #a01447); /* Gradient tło */
 	border: none;
 	color: white;
 	width: 50px;
@@ -500,10 +504,10 @@ body {
 	align-items: center;
 	justify-content: center;
 	cursor: pointer;
-	transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Płynniejsze przejścia */
 	z-index: 3;
 	box-shadow: 0 4px 15px rgba(128, 16, 57, 0.3);
-	backdrop-filter: blur(10px);
+	backdrop-filter: blur(10px); /* Efekt rozmazania */
 }
 
 .carousel-arrow:hover {
@@ -522,14 +526,6 @@ body {
 
 .carousel-arrow-right {
 	right: -25px;
-}
-
-.carousel-arrow svg {
-	transition: transform 0.2s ease;
-}
-
-.carousel-arrow:hover svg {
-	transform: scale(1.2);
 }
 
 /* Efekt świecenia dla przycisków */
@@ -585,16 +581,6 @@ body {
 
 	.image-slide:hover {
 		transform: scale(1.02); /* Prostsze hover na mobile */
-	}
-
-	.carousel-arrow-left {
-		left: -15px;
-		left: 10px;
-	}
-
-	.carousel-arrow-right {
-		right: -15px;
-		right: 10px;
 	}
 }
 
@@ -668,6 +654,21 @@ body {
 	padding: 30px 0 20px 0 !important;
 }
 
+.contact-footer h3 {
+	font-size: 24px !important;
+	margin-bottom: 15px;
+}
+
+.contact-item {
+	font-size: 16px !important;
+	margin-bottom: 10px;
+}
+
+.col-lg-4 div {
+	margin-top: 20px;
+}
+
+/* Poprawiona ścieżka do obrazu tła w stopce */
 .contact-footer::before {
 	content: "";
 	position: absolute;
@@ -681,11 +682,6 @@ body {
 	background-position: center;
 	opacity: 0.1;
 	pointer-events: none;
-}
-
-.contact-item {
-	font-size: 16px !important;
-	margin-bottom: 10px;
 }
 
 .contact-item:hover {
@@ -743,11 +739,11 @@ body {
 /* Telefony i małe urządzenia */
 @media (max-width: 768px) {
 	.main-content {
-		padding-top: 110px;
+		padding-top: 110px; /* Przywrócone do rozsądnej wartości */
 	}
 
 	.header {
-		padding: 12px 0;
+		padding: 12px 0; /* Lekko zmniejszone ale nadal eleganckie */
 	}
 
 	.header.scrolled {
@@ -756,12 +752,13 @@ body {
 
 	.nav-container {
 		flex-direction: column;
-		gap: 12px;
+		gap: 12px; /* Zwiększone dla lepszego wyglądu */
 		padding: 0 20px;
 		height: auto;
 		padding-bottom: 8px;
 	}
 
+	/* Logo i ikony w jednej linii */
 	.header-top-row {
 		display: flex;
 		justify-content: space-between;
@@ -771,7 +768,7 @@ body {
 	}
 
 	.logo img {
-		height: 40px;
+		height: 40px; /* Przywrócone do ładnego rozmiaru */
 	}
 
 	.social-icons {
@@ -779,11 +776,12 @@ body {
 	}
 
 	.social-icon {
-		width: 32px;
+		width: 32px; /* Przywrócone do ładnego rozmiaru */
 		height: 32px;
 		font-size: 16px;
 	}
 
+	/* Menu estetycznie wyśrodkowane */
 	.nav-menu {
 		display: flex;
 		gap: 25px;
@@ -794,7 +792,7 @@ body {
 		width: 100%;
 		scrollbar-width: none;
 		-ms-overflow-style: none;
-		justify-content: center;
+		justify-content: center; /* Wyśrodkowane menu */
 		padding-left: 10px;
 		padding-right: 10px;
 	}
@@ -808,10 +806,10 @@ body {
 	}
 
 	.nav-menu a {
-		font-size: 15px;
+		font-size: 15px; /* Czytelny rozmiar */
 		padding: 6px 12px;
 		white-space: nowrap;
-		border-radius: 8px;
+		border-radius: 8px; /* Dodane zaokrąglenie dla elegancji */
 		transition: all 0.3s ease;
 	}
 
@@ -824,6 +822,7 @@ body {
 		bottom: -10px;
 	}
 
+	/* Reszta bez zmian dla zachowania estetyki */
 	.photo-gallery {
 		position: relative;
 		height: auto;
@@ -861,6 +860,7 @@ body {
 		transform: rotate(3deg);
 	}
 
+	/* Responsywność kart ofert */
 	.card-content {
 		padding: 25px;
 	}
@@ -891,6 +891,7 @@ body {
 		transform: perspective(1000px) rotateX(-2deg) translateY(-10px);
 	}
 
+	/* Responsywność karuzeli */
 	.image-carousel {
 		height: 300px;
 	}
@@ -914,6 +915,7 @@ body {
 		right: -15px;
 	}
 
+	/* Responsywność stopki */
 	.contact-footer h3 {
 		font-size: 22px !important;
 		text-align: center;
@@ -929,7 +931,7 @@ body {
 	}
 }
 
-/* Bardzo małe urządzenia */
+/* Bardzo małe urządzenia - tylko niezbędne zmiany */
 @media (max-width: 480px) {
 	.main-content {
 		padding-top: 105px;
@@ -946,7 +948,7 @@ body {
 	}
 
 	.logo img {
-		height: 36px;
+		height: 36px; /* Subtelnie mniejsze */
 	}
 
 	.social-icon {
@@ -969,6 +971,7 @@ body {
 		padding: 5px 10px;
 	}
 
+	/* Reszta pozostaje estetyczna */
 	.photo-gallery {
 		padding: 15px;
 		gap: 25px;
@@ -1051,6 +1054,7 @@ body {
 	opacity: 1;
 }
 
+/* Loading placeholder for images */
 .gallery-lazy:not(.loaded) {
 	background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
 	background-size: 200% 100%;
@@ -1064,6 +1068,39 @@ body {
 	100% {
 		background-position: -200% 0;
 	}
+}
+
+/* Enhanced carousel arrows */
+.carousel-arrow {
+	background: rgba(255, 255, 255, 0.9);
+	border: 2px solid #801039;
+	color: #801039;
+	border-radius: 50%;
+	width: 50px;
+	height: 50px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	box-shadow: 0 4px 12px rgba(128, 16, 57, 0.2);
+	backdrop-filter: blur(10px);
+	z-index: 10;
+}
+
+.carousel-arrow:hover {
+	background: #801039;
+	color: white;
+	transform: scale(1.1);
+	box-shadow: 0 6px 16px rgba(128, 16, 57, 0.4);
+}
+
+.carousel-arrow svg {
+	transition: transform 0.2s ease;
+}
+
+.carousel-arrow:hover svg {
+	transform: scale(1.2);
 }
 
 /* ===== OVERLAY LOCATIONS SECTION ===== */
@@ -1082,7 +1119,7 @@ body {
 	visibility: hidden;
 	transition: opacity 0.4s ease, visibility 0.4s ease;
 	backdrop-filter: blur(1px);
-	overflow: hidden;
+	overflow: hidden; /* Zapobiega paskom przewijania na głównym overlay */
 }
 
 .locations-overlay.active {
@@ -1097,11 +1134,15 @@ body {
 	position: relative;
 	overflow-y: auto;
 	padding: 40px 30px;
+	/* background: rgba(255, 255, 255, 0.95); */
 	border-radius: 20px;
-	scrollbar-width: none;
-	-ms-overflow-style: none;
+	/* box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1); */
+	/* Ukryj paski przewijania ale zachowaj funkcjonalność */
+	scrollbar-width: none; /* Firefox */
+	-ms-overflow-style: none; /* Internet Explorer 10+ */
 }
 
+/* Ukryj paski przewijania w Webkit (Chrome, Safari, Edge) */
 .overlay-content::-webkit-scrollbar {
 	display: none;
 }
@@ -1218,7 +1259,7 @@ body {
 	}
 }
 
-/* Responsive for overlay */
+/* Responsive styles for overlay */
 @media (max-width: 768px) {
 	.overlay-title {
 		font-size: 24px;
@@ -1267,7 +1308,7 @@ body {
 /* Performance optimizations */
 .image-slide img {
 	will-change: transform, opacity;
-	transform: translateZ(0);
+	transform: translateZ(0); /* Force hardware acceleration */
 }
 
 .offer-card {
@@ -1287,11 +1328,14 @@ body {
 /* pokaż subtelny scrollbar w overlay "Gdzie działamy" tylko na mobile */
 @media (max-width: 768px) {
 	.locations-overlay.active .overlay-content {
+		/* zostaw trochę miejsca, żeby pasek nie nachodził na treść */
 		padding-right: 30px;
+		/* Firefox */
 		scrollbar-width: thin;
 		scrollbar-color: rgba(128, 16, 57, 0.22) transparent;
 	}
 
+	/* WebKit (Chrome, Safari, Edge) — nadpisuje wcześniejsze hide */
 	.locations-overlay.active .overlay-content::-webkit-scrollbar {
 		width: 6px;
 	}
@@ -1308,7 +1352,7 @@ body {
 	}
 }
 
-/* Performance hints */
+/* === Performance hints (no visual change) === */
 .offer-card,
 .card-overlay,
 .card-background,
@@ -1324,12 +1368,12 @@ body {
 	will-change: transform, opacity;
 }
 
-/* Isolate complex cards */
+/* Isolate complex cards to reduce repaints */
 .offer-card {
 	contain: layout paint style;
 }
 
-/* Prevent text repaints */
+/* Prevent expensive text repaints during animations */
 h1,
 h2,
 h3,
@@ -1342,6 +1386,9 @@ p,
 	text-rendering: optimizeLegibility;
 }
 
+/* Avoid layout shift from images/videos lacking intrinsic size */
+
+/* Przywrócenie płynności i poprawnej perspektywy w galerii */
 /* ===== LIGHTBOX STYLES ===== */
 .lightbox-overlay {
 	position: fixed;
@@ -1714,7 +1761,7 @@ p,
 	left: 0;
 	width: 100vw;
 	height: 100vh;
-	background: rgba(238, 201, 210, 0.95);
+	background: rgba(238, 201, 210, 0.95); /* Kolor tła jak w aplikacji */
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -1754,12 +1801,12 @@ p,
 	font-weight: 500;
 }
 
-/* ===== SEKCJA FAQ ===== */
+/* ===== SEKCJA FAQ – OPTYMALIZACJA POD AI MODE GOOGLE ===== */
 .faq-section.full-width {
-	background: rgba(255, 255, 255, 0.95);
-	padding: 0 20px 60px;
+	background: rgba(255, 255, 255, 0.95); /* biała, lekko transparentna */
+	padding: 0 20px 60px; /* brak górnego paddingu → przyklejona */
 	margin: 0;
-	border-bottom-left-radius: 40px;
+	border-bottom-left-radius: 40px; /* zaokrąglone tylko dół */
 	box-shadow: 0 20px 25px rgba(128, 16, 57, 0.08);
 	position: relative;
 	z-index: 2;
@@ -1788,7 +1835,7 @@ p,
 	border-radius: 2px;
 }
 
-/* Karty pytań */
+/* Karty pytań – box-shadow + pełna szerokość w kontenerze */
 .faq-item {
 	max-width: 900px;
 	margin: 0 auto 15px;
@@ -1883,24 +1930,4 @@ details[open] .faq-answer {
 	.faq-question {
 		font-size: 16px;
 	}
-}
-
-/* Zapobieganie CLS – stała wysokość wideo */
-.photo-frame video {
-	width: 100%;
-	height: 320px;
-	object-fit: cover;
-	border-radius: 3px;
-	background: #f0f0f0;
-	display: block;
-}
-
-/* Płynne przejście z postera na wideo */
-.video-lazy {
-	opacity: 1;
-	transition: opacity 0.4s ease;
-}
-
-.video-lazy[src] {
-	opacity: 1;
 }
