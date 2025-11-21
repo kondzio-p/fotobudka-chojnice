@@ -20,18 +20,16 @@
 		/>
 		<link rel="shortcut icon" href="/favicon.ico" />
 
-		<!-- Bootstrap CSS -->
 		<link href="style/bootstrap.min.css" rel="stylesheet" />
 
-		<!-- Custom CSS -->
 		<link rel="stylesheet" href="style/style.css" />
 
-		<!-- Preload ważnych obrazów i filmów -->
 		<link rel="preload" href="images/360.png" as="image" />
 		<link rel="preload" href="images/mirror.jpg" as="image" />
 		<link rel="preload" href="images/heavysmoke.jpg" as="image" />
 		<link rel="preload" href="images/fountain.jpg" as="image" />
 		<link rel="preload" href="images/neons.jpg" as="image" />
+		<link rel="preload" href="images/logoKdzki.webp" as="image" />
 
 		<link
 			rel="preload"
@@ -59,7 +57,6 @@
 			type="video/webm"
 		/>
 
-		<!-- Preload fontów -->
 		<link
 			rel="preload"
 			href="fonts/poppins/Poppins-Regular.ttf"
@@ -89,7 +86,6 @@
 			crossorigin
 		/>
 
-		<!-- Preload dodatkowych obrazów (logo, tło, SVG) -->
 		<link rel="preload" href="images/og-events-logo-white.png" as="image" />
 		<link rel="preload" href="images/bgKamien.webp" as="image" />
 		<link rel="preload" href="images/bgKamien.jpg" as="image" />
@@ -97,8 +93,6 @@
 		<link rel="preload" href="images/insta.svg" as="image" />
 		<link rel="preload" href="images/phone.svg" as="image" />
 
-		<!-- Removed video preloads to avoid browser warnings for unsupported `as` in some contexts -->
-		<!-- Schema LocalBusiness + FAQ (dla AI) -->
 		<script type="application/ld+json">
 			{
 				"@context": "https://schema.org",
@@ -133,20 +127,16 @@
 		</script>
 	</head>
 
-	<!-- Loader ekranu -->
 	<div id="page-loader" class="page-loader">
 		<div class="loader-spinner"></div>
 		<p>Ładowanie...</p>
 	</div>
 
 	<body>
-		<!-- Tło globalne -->
 		<div id="background-fixed"></div>
 
-		<!-- Główny nagłówek strony -->
 		<header class="header">
 			<div class="nav-container">
-				<!-- Logo i menu na desktopie -->
 				<div class="logo d-none d-md-block">
 					<img
 						decoding="async"
@@ -167,7 +157,6 @@
 					</ul>
 				</nav>
 
-				<!-- Ikony social media na desktopie -->
 				<div class="social-icons d-none d-md-flex">
 					<a
 						href="https://www.facebook.com/profile.php?id=61553668165091"
@@ -195,9 +184,7 @@
 					/></a>
 				</div>
 
-				<!-- Układ mobilny -->
 				<div class="d-md-none w-100">
-					<!-- Górny pasek: logo + social media -->
 					<div class="header-top-row">
 						<div class="logo">
 							<img
@@ -237,7 +224,6 @@
 						</div>
 					</div>
 
-					<!-- Menu mobilne -->
 					<nav>
 						<ul class="nav-menu">
 							<li>
@@ -251,10 +237,8 @@
 			</div>
 		</header>
 
-		<!-- Główna część strony -->
 		<main class="main-content">
 			<div class="photo-gallery">
-				<!-- Ramka 1 -->
 				<div class="photo-frame">
 					<div class="video-container">
 						<video
@@ -271,7 +255,6 @@
 					</div>
 				</div>
 
-				<!-- Ramka 2 -->
 				<div class="photo-frame">
 					<div class="video-container">
 						<video
@@ -288,7 +271,6 @@
 					</div>
 				</div>
 
-				<!-- Ramka 3 -->
 				<div class="photo-frame">
 					<div class="video-container">
 						<video
@@ -305,7 +287,6 @@
 					</div>
 				</div>
 
-				<!-- Ramka 4 -->
 				<div class="photo-frame">
 					<div class="video-container">
 						<video
@@ -324,7 +305,6 @@
 			</div>
 		</main>
 
-		<!-- Sekcja powitalna (hero copy + CTA) -->
 		<section id="welcome" class="welcome-section">
 			<div class="container-fluid px-0">
 				<div
@@ -343,7 +323,6 @@
 					</p>
 				</div>
 
-				<!-- Sekcja oferty: karty usług -->
 				<div
 					class="offers-section py-5"
 					style="
@@ -360,7 +339,6 @@
 						</h3>
 
 						<div class="row g-4">
-							<!-- Karta: Fotobudka 360 -->
 							<div class="col-lg-4 col-md-6">
 								<div class="offer-card offer-card-360 h-100">
 									<div class="card-background"></div>
@@ -384,7 +362,6 @@
 								</div>
 							</div>
 
-							<!-- Karta: Fotolustro -->
 							<div class="col-lg-4 col-md-6">
 								<div class="offer-card offer-card-mirror h-100">
 									<div class="card-background"></div>
@@ -408,7 +385,6 @@
 								</div>
 							</div>
 
-							<!-- Karta: Ciężki dym -->
 							<div class="col-lg-4 col-md-6">
 								<div class="offer-card offer-card-smoke h-100">
 									<div class="card-background"></div>
@@ -432,7 +408,6 @@
 								</div>
 							</div>
 
-							<!-- Karta: Fontanny iskier -->
 							<div class="col-lg-4 col-md-6 offset-lg-2">
 								<div
 									class="offer-card offer-card-fountain h-100"
@@ -458,7 +433,6 @@
 								</div>
 							</div>
 
-							<!-- Karta: Neonowe napisy -->
 							<div class="col-lg-4 col-md-6">
 								<div class="offer-card offer-card-neons h-100">
 									<div class="card-background"></div>
@@ -482,16 +456,11 @@
 								</div>
 							</div>
 						</div>
-						<!-- /row -->
 					</div>
-					<!-- /container -->
 				</div>
-				<!-- /offers-section -->
 			</div>
-			<!-- /container-fluid -->
 		</section>
 
-		<!-- Sekcja: "My w liczbach" (statystyki) -->
 		<section
 			class="stats-section py-5"
 			style="background: rgba(255, 255, 255, 0.95)"
@@ -504,7 +473,6 @@
 					</h3>
 				</div>
 
-				<!-- Trzy karty statystyk -->
 				<div class="row justify-content-center g-4">
 					<div class="col-lg-3 col-md-4 col-sm-6">
 						<div
@@ -602,7 +570,6 @@
 			</div>
 		</section>
 
-		<!-- Sekcja FAQ -->
 		<section
 			class="faq-section full-width"
 			itemscope
@@ -659,7 +626,6 @@
 			</div>
 		</section>
 
-		<!-- Sekcja galerii zdjęć (karuzela 3 obrazów) -->
 		<section
 			class="image-gallery-section py-5"
 			style="background: rgba(139, 75, 122, 0.1)"
@@ -672,7 +638,6 @@
 				</div>
 
 				<div class="image-carousel-container">
-					<!-- Strzałka: poprzedni slajd -->
 					<button
 						class="carousel-arrow carousel-arrow-left"
 						aria-label="Poprzedni slajd"
@@ -695,7 +660,6 @@
 						</svg>
 					</button>
 
-					<!-- Lista slajdów w karuzeli -->
 					<div class="image-carousel">
 						<div class="image-slide image-slide-left">
 							<img
@@ -726,7 +690,6 @@
 						</div>
 					</div>
 
-					<!-- Strzałka: następny slajd -->
 					<button
 						class="carousel-arrow carousel-arrow-right"
 						aria-label="Następny slajd"
@@ -752,7 +715,6 @@
 			</div>
 		</section>
 
-		<!-- Sekcja: Gdzie działamy -->
 		<section
 			class="locations-section py-5"
 			style="background: rgba(255, 255, 255, 0.9)"
@@ -781,10 +743,8 @@
 			</div>
 		</section>
 
-		<!-- Overlay z listą miast -->
 		<div id="locationsOverlay" class="locations-overlay">
 			<div class="overlay-content">
-				<!-- Przycisk zamknięcia -->
 				<button class="close-overlay" onclick="hideLocationsOverlay()">
 					<svg width="24" height="24" viewBox="0 0 24 24" fill="none">
 						<path
@@ -796,10 +756,8 @@
 					</svg>
 				</button>
 
-				<!-- Nagłówek -->
 				<h2 class="overlay-title">Gdzie działamy?</h2>
 
-				<!-- Lista miast -->
 				<div class="cities-container">
 					<div class="cities-column">
 						<ul class="cities-list text-center">
@@ -829,7 +787,6 @@
 			</div>
 		</div>
 
-		<!-- Sekcja Footer: Kontakt i prawa autorskie -->
 		<footer
 			class="contact-footer"
 			style="
@@ -842,7 +799,6 @@
 		>
 			<div class="container">
 				<div class="row">
-					<!-- Kolumna: Informacje kontaktowe -->
 					<div class="col-lg-8">
 						<h3
 							style="
@@ -857,7 +813,6 @@
 						</h3>
 
 						<div class="contact-info">
-							<!-- Kontakt: Facebook -->
 							<div
 								class="contact-item"
 								style="
@@ -900,7 +855,6 @@
 								>
 							</div>
 
-							<!-- Kontakt: Instagram -->
 							<div
 								class="contact-item"
 								style="
@@ -943,7 +897,6 @@
 								>
 							</div>
 
-							<!-- Kontakt: Telefon -->
 							<div
 								class="contact-item"
 								style="
@@ -987,10 +940,31 @@
 						</div>
 					</div>
 
-					<!-- Kolumna: Prawa autorskie -->
 					<div
-						class="col-lg-4 d-flex align-items-center justify-content-center"
+						class="col-lg-4 d-flex flex-column align-items-lg-end align-items-center justify-content-center"
 					>
+						<div class="mb-3 text-center text-lg-end">
+							<a
+								href="https://kdzki.pl/"
+								target="_blank"
+								aria-label="Kdzki - Strony Internetowe"
+							>
+								<img
+									decoding="async"
+									loading="lazy"
+									src="images/logoKdzki.webp"
+									alt="Kdzki - Strony Internetowe"
+									style="
+										height: 30px;
+										width: auto;
+										filter: grayscale(80%) opacity(0.8);
+										transition: all 0.3s ease;
+									"
+									onmouseover="this.style.filter='grayscale(0%) opacity(1)'; this.style.transform='scale(1.05)'"
+									onmouseout="this.style.filter='grayscale(80%) opacity(0.8)'; this.style.transform='scale(1)'"
+								/>
+							</a>
+						</div>
 						<div
 							style="
 								text-align: right;
@@ -1006,15 +980,12 @@
 			</div>
 		</footer>
 
-		<!-- GSAP Library -->
 		<script src="js/gsap.min.js"></script>
 		<script src="js/ScrollToPlugin.min.js"></script>
 		<script src="js/ScrollTrigger.min.js"></script>
 
-		<!-- Custom JavaScript -->
 		<script src="script.js"></script>
 
-		<!-- Lazy loading support -->
 		<script>
 			// Simple lazy loading without WebP conversion
 			function loadImageSafely(img) {
@@ -1078,7 +1049,6 @@
 			}
 		</script>
 
-		<!-- Animacje GSAP -->
 		<script>
 			gsap.registerPlugin(ScrollTrigger);
 		</script>
