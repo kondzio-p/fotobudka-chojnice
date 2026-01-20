@@ -212,6 +212,20 @@
 			});
 		}
 
+		function loadImageSafely(img, src, alt) {
+			if (!img) return;
+			img.src = src;
+			if (alt) img.alt = alt;
+			img.onerror = function () {
+				console.warn("Failed to swap gallery image:", src);
+				this.src =
+					"data:image/svg+xml;base64," +
+					btoa(
+						'<svg width="300" height="200" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" fill="#f0f0f0"/><text x="50%" y="50%" font-family="Arial" font-size="14" fill="#999" text-anchor="middle" dy=".3em">Brak obrazu</text></svg>'
+					);
+			};
+		}
+
 		function updateCarousel() {
 			if (isAnimating || galleryImages.length === 0) return;
 			isAnimating = true;
