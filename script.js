@@ -1171,8 +1171,11 @@
 			function highlightNavOnScroll() {
 				const currentScroll = window.scrollY;
 				const documentHeight = document.documentElement.scrollHeight;
+				const windowHeight = window.innerHeight;
 
 				if (!header) return;
+
+				// Header appearance (unchanged)
 				if (currentScroll > 0) {
 					if (!header.classList.contains("scrolled")) {
 						header.classList.add("scrolled");
@@ -1193,55 +1196,52 @@
 							ease: "power2.out",
 						});
 					}
-					navLinks.forEach((link) => {
-						link.classList.remove("active");
-						if (link.getAttribute("href") === "#")
-							link.classList.add("active");
-					});
-					return;
 				}
 
-				let currentSection = null;
-				if (window.innerHeight + window.scrollY >= documentHeight - 100)
-					currentSection = footer;
-				else {
-					sections.forEach((section) => {
-						if (!section) return;
-						const sectionTop = section.offsetTop - 100;
-						const sectionBottom = sectionTop + section.offsetHeight;
-						if (
-							currentScroll >= sectionTop &&
-							currentScroll < sectionBottom
-						)
-							currentSection = section;
-					});
-				}
+				// Determine active section based on simplified "Zones"
+				// Zone 3: Contact (Bottom)
+				// Zone 2: About / Welcome (Middle - covers everything from #welcome to #contact)
+				// Zone 1: Home (Top - everything before #welcome)
 
-				if (currentSection) {
-					navLinks.forEach((link) => {
-						const wasActive = link.classList.contains("active");
-						link.classList.remove("active");
-						if (
-							link.getAttribute("href") ===
-							"#" + currentSection.id
-						) {
-							link.classList.add("active");
-							if (!wasActive) {
-								gsap.fromTo(
-									link,
-									{ scale: 1 },
-									{
-										scale: 1.05,
-										duration: 0.2,
-										yoyo: true,
-										repeat: 1,
-										ease: "power2.inOut",
-									}
-								);
-							}
+				const welcomeSection = $("#welcome");
+				const contactSection = $("#contact");
+				
+				let targetHref = "#"; // Default to Home
+
+				if (contactSection) {
+					const contactTop = contactSection.offsetTop - 150;
+					// If we are near bottom or past contact section top
+					if (currentScroll + windowHeight >= documentHeight - 50 || currentScroll >= contactTop) {
+						targetHref = "#contact";
+					} else if (welcomeSection) {
+						const welcomeTop = welcomeSection.offsetTop - 150;
+						if (currentScroll >= welcomeTop) {
+							targetHref = "#welcome";
 						}
-					});
+					}
 				}
+
+				navLinks.forEach((link) => {
+					const wasActive = link.classList.contains("active");
+					link.classList.remove("active");
+					
+					if (link.getAttribute("href") === targetHref) {
+						link.classList.add("active");
+						if (!wasActive) {
+							gsap.fromTo(
+								link,
+								{ scale: 1 },
+								{
+									scale: 1.05,
+									duration: 0.2,
+									yoyo: true,
+									repeat: 1,
+									ease: "power2.inOut",
+								}
+							);
+						}
+					}
+				});
 			}
 
 			window.addEventListener("scroll", highlightNavOnScroll, {
