@@ -554,6 +554,7 @@
 				gsap.to(lightboxImage, {
 					opacity: 1,
 					scale: 1,
+					x: 0,
 					duration: 0.4,
 					ease: "power2.out",
 				});
