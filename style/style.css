@@ -1977,3 +1977,372 @@ details[open] .faq-answer {
 		font-size: 16px;
 	}
 }
+
+/* ===================================================================
+   SEO / STRUKTURA — nagłówek H1, linki ofertowe, podstrony usług
+   =================================================================== */
+
+/* --- Nagłówek H1 nad kolażem wideo --- */
+.main-content {
+	flex-direction: column;
+}
+
+.hero-heading {
+	width: 100%;
+	max-width: 900px;
+	margin: 20px auto 45px auto;
+	padding: 26px 30px;
+	text-align: center;
+	background: rgba(255, 255, 255, 0.9);
+	border-radius: 20px;
+	box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.hero-heading h1 {
+	margin: 0 0 12px 0;
+	font-size: 36px;
+	font-weight: 700;
+	line-height: 1.25;
+	color: #2c2c2c;
+}
+
+.hero-heading h1 .accent {
+	color: #801039;
+}
+
+.hero-heading p {
+	margin: 0;
+	font-size: 17px;
+	line-height: 1.6;
+	color: #666;
+}
+
+@media (max-width: 1024px) {
+	.hero-heading h1 {
+		font-size: 30px;
+	}
+}
+
+@media (max-width: 768px) {
+	.hero-heading {
+		margin: 15px auto 30px auto;
+		padding: 20px 22px;
+	}
+	.hero-heading h1 {
+		font-size: 25px;
+	}
+	.hero-heading p {
+		font-size: 15px;
+	}
+}
+
+@media (max-width: 480px) {
+	.hero-heading h1 {
+		font-size: 22px;
+	}
+	.hero-heading p {
+		font-size: 14px;
+	}
+}
+
+/* --- Karty oferty jako linki do podstron --- */
+.offer-card-link {
+	display: block;
+	height: 100%;
+	text-decoration: none;
+	color: inherit;
+}
+
+.offer-card-link:hover,
+.offer-card-link:focus {
+	text-decoration: none;
+	color: inherit;
+}
+
+.offer-card-link:focus-visible .offer-card {
+	outline: 3px solid #801039;
+	outline-offset: 4px;
+}
+
+.card-cta {
+	display: inline-block;
+	margin-top: 10px;
+	font-size: 16px;
+	font-weight: 500;
+	color: #fff;
+	text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+/* --- Lista usług w stopce --- */
+.footer-services {
+	margin-bottom: 45px;
+	padding-bottom: 30px;
+	border-bottom: 1px solid rgba(128, 16, 57, 0.2);
+}
+
+.footer-services-title {
+	font-size: 20px;
+	font-weight: 600;
+	color: #801039;
+	margin: 0 0 15px 0;
+}
+
+.footer-services ul {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px 28px;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.footer-services a {
+	color: #2c2c2c;
+	text-decoration: none;
+	font-size: 16px;
+	font-weight: 500;
+	transition: color 0.3s ease;
+}
+
+.footer-services a:hover {
+	color: #801039;
+	text-decoration: underline;
+}
+
+/* --- Podstrony usług --- */
+.subpage-main {
+	max-width: 900px;
+	margin: 0 auto;
+	padding: 110px 20px 60px 20px;
+}
+
+.breadcrumbs {
+	margin-bottom: 18px;
+	font-size: 14px;
+	color: #fff;
+	text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+}
+
+.breadcrumbs ol {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.breadcrumbs li + li::before {
+	content: "/";
+	margin-right: 8px;
+	opacity: 0.7;
+}
+
+.breadcrumbs a {
+	color: #fff;
+	text-decoration: underline;
+}
+
+.subpage-card {
+	background: rgba(255, 255, 255, 0.95);
+	border-radius: 20px;
+	padding: 45px 50px;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.subpage-card h1 {
+	font-size: 36px;
+	font-weight: 700;
+	line-height: 1.25;
+	color: #2c2c2c;
+	margin: 0 0 18px 0;
+}
+
+.subpage-card h1 .accent {
+	color: #801039;
+}
+
+.subpage-lead {
+	font-size: 19px;
+	line-height: 1.65;
+	color: #555;
+	margin-bottom: 30px;
+}
+
+.subpage-hero-img {
+	width: 100%;
+	height: 340px;
+	object-fit: cover;
+	border-radius: 15px;
+	margin-bottom: 35px;
+}
+
+.subpage-card h2 {
+	font-size: 26px;
+	font-weight: 600;
+	color: #801039;
+	margin: 40px 0 15px 0;
+}
+
+.subpage-card h3 {
+	font-size: 20px;
+	font-weight: 600;
+	color: #2c2c2c;
+	margin: 28px 0 10px 0;
+}
+
+.subpage-card p {
+	font-size: 16px;
+	line-height: 1.75;
+	color: #444;
+	margin-bottom: 16px;
+}
+
+.subpage-list {
+	margin: 0 0 20px 0;
+	padding-left: 22px;
+	color: #444;
+}
+
+.subpage-list li {
+	font-size: 16px;
+	line-height: 1.7;
+	margin-bottom: 9px;
+}
+
+.subpage-card details {
+	border-bottom: 1px solid rgba(128, 16, 57, 0.15);
+	padding: 14px 0;
+}
+
+.subpage-card summary {
+	cursor: pointer;
+	font-size: 17px;
+	font-weight: 500;
+	color: #2c2c2c;
+	list-style: none;
+	position: relative;
+	padding-right: 34px;
+}
+
+.subpage-card summary::-webkit-details-marker {
+	display: none;
+}
+
+.subpage-card summary::after {
+	content: "+";
+	position: absolute;
+	right: 4px;
+	top: 50%;
+	transform: translateY(-50%);
+	font-size: 24px;
+	color: #801039;
+	line-height: 1;
+}
+
+.subpage-card details[open] summary::after {
+	content: "\2212";
+}
+
+.subpage-card details p {
+	margin: 12px 0 0 0;
+	font-size: 15px;
+	color: #555;
+}
+
+.subpage-cta {
+	margin-top: 40px;
+	padding: 30px;
+	background: #eec9d2;
+	border-radius: 15px;
+	text-align: center;
+}
+
+.subpage-cta p {
+	font-size: 17px;
+	color: #2c2c2c;
+	margin-bottom: 20px;
+}
+
+.subpage-cta .btn-call {
+	display: inline-block;
+	background: #801039;
+	color: #fff;
+	padding: 15px 40px;
+	border-radius: 25px;
+	font-size: 18px;
+	font-weight: 500;
+	text-decoration: none;
+	box-shadow: 0 5px 15px rgba(128, 16, 57, 0.3);
+	transition: all 0.3s ease;
+}
+
+.subpage-cta .btn-call:hover {
+	background: #a01447;
+	color: #fff;
+	transform: translateY(-2px);
+	box-shadow: 0 8px 20px rgba(128, 16, 57, 0.4);
+}
+
+.subpage-related {
+	margin-top: 40px;
+	background: rgba(255, 255, 255, 0.95);
+	border-radius: 20px;
+	padding: 35px 50px;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.subpage-related h2 {
+	font-size: 24px;
+	font-weight: 600;
+	color: #801039;
+	margin: 0 0 18px 0;
+}
+
+.subpage-related ul {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px 28px;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.subpage-related a {
+	color: #2c2c2c;
+	font-size: 16px;
+	font-weight: 500;
+	text-decoration: none;
+	transition: color 0.3s ease;
+}
+
+.subpage-related a:hover {
+	color: #801039;
+	text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+	.subpage-main {
+		padding: 140px 15px 40px 15px;
+	}
+	.subpage-card,
+	.subpage-related {
+		padding: 28px 22px;
+		border-radius: 15px;
+	}
+	.subpage-card h1 {
+		font-size: 26px;
+	}
+	.subpage-lead {
+		font-size: 17px;
+	}
+	.subpage-card h2 {
+		font-size: 22px;
+	}
+	.subpage-hero-img {
+		height: 220px;
+	}
+	.footer-services ul {
+		gap: 10px 20px;
+	}
+}
