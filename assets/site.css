@@ -1,72 +1,104 @@
-/* Page CSS: only what sits inside a visual or the kit lacks (references/system.md). */
+/* Style strony OG Events na systemie tasteskill (system.css, layout.css). */
 
-/* the client's own logo in the nav and footer */
-.nav__logo .nav__logo-img { height: 40px; width: auto; }
-@media (max-width: 639px) { .nav__logo .nav__logo-img { height: 32px; } }
+/* ---------- układ: naturalna wysokość sekcji ----------
+   System skilla ustawia każdej sekcji wysokość równą oknu. Przy niskich ekranach i tabletach treść
+   wylewała się wtedy na sąsiednią sekcję. Tu sekcje rosną z treścią, ze stałym odstępem. */
+:root { --sec-pad: clamp(64px, 7vw, 112px); }
+html { scroll-padding-top: calc(var(--nav, 72px) + 8px); }
+main > :is(section, .section):not(.hero), footer.closing {
+  height: auto !important;
+  min-height: 0 !important;
+  display: block;
+  padding: var(--sec-pad) 0;
+}
+main > :is(section, .section) > .wrap, footer.closing > .wrap { height: auto !important; }
+main > :is(section, .section) > .wrap > .fill { flex: none; }
+footer.closing { padding-bottom: var(--s-7); }
 
-/* a film from a wedding: a still poster that plays on a click (layout-v4.md, other kinds) */
-.film { position: relative; overflow: hidden; }
-.film > video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: var(--ly-pos, 50% 50%); }
-.film--card { aspect-ratio: 4 / 5; }
-.film__play {
+/* hero: na desktopie wypełnia ekran, ale nigdy nie jest wyższy niż jego treść */
+main > .hero {
+  height: auto;
+  min-height: 0;
+  padding: calc(var(--nav, 72px) + var(--s-7)) 0 var(--sec-pad);
+}
+main > .hero > .wrap { height: auto; display: block; }
+.hero--split .hero__grid { align-items: start; }
+.hero--split .hero__text { align-self: center; }
+.hero--split .hero__media {
+  height: auto;
+  aspect-ratio: 4 / 5;
+  max-height: calc(100svh - var(--nav, 72px) - 2 * var(--s-7));
+  min-height: 420px;
+  width: 100%;
+  margin-left: auto;
+}
+@media (max-width: 1023px) {
+  .hero--split .hero__grid { display: flex; flex-direction: column; }
+  .hero--split .hero__text { align-self: stretch; }
+  .hero--split .hero__media { flex: none; aspect-ratio: 4 / 3; max-height: none; min-height: 0; margin-top: var(--s-7); }
+}
+@media (max-width: 639px) {
+  .hero--split .hero__media { aspect-ratio: 1 / 1; }
+}
+
+/* ---------- logo ---------- */
+.nav__logo img.nav__logo-img { height: 56px; width: auto; }
+@media (max-width: 639px) { .nav__logo img.nav__logo-img { height: 40px; } }
+
+/* ---------- filmy z wesel: poster, który rusza po kliknięciu ---------- */
+.film { position: relative; overflow: hidden; border-radius: var(--r-lg); background: var(--p-surface); }
+.film.film > video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: var(--ly-pos, 50% 40%); }
+.film.film > .film__play {
   position: absolute; left: var(--s-5); bottom: var(--s-5); z-index: 1;
   width: 56px; height: 56px; border: 0; border-radius: 999px; cursor: pointer;
   display: grid; place-items: center; background: var(--p-bg); color: var(--p-accent);
+  transition: transform 0.2s ease;
 }
+.film__play:hover { transform: scale(1.06); }
 .film__play span { width: 0; height: 0; margin-left: 4px; border-left: 14px solid currentColor; border-top: 9px solid transparent; border-bottom: 9px solid transparent; }
 .film.is-playing .film__play span { width: 14px; height: 16px; margin: 0; border: 0; border-left: 4px solid currentColor; border-right: 4px solid currentColor; }
+#filmy .film--card { aspect-ratio: 4 / 3; }
+.film--faq { aspect-ratio: 4 / 5; }
+.film--sub { aspect-ratio: 4 / 5; }
 
-/* the booking panel beside the steps */
-.booking { padding: var(--s-7); background: var(--p-bg); border-radius: var(--r-lg); display: flex; flex-direction: column; gap: var(--s-4); }
+/* ---------- atrakcje: zdjęcie obok listy ---------- */
+#atrakcje .frame--fill { position: relative; height: auto; aspect-ratio: 4 / 5; max-height: 680px; width: 100%; }
+@media (max-width: 1023px) {
+  #atrakcje .frame--fill { aspect-ratio: 4 / 3; margin-top: var(--s-6); }
+}
+.rows a.rows__name { color: inherit; text-decoration: none; }
+.rows a.rows__name:hover { color: var(--action); }
+
+/* ---------- rezerwacja ---------- */
+.booking { padding: var(--s-7); background: var(--p-surface); border-radius: var(--r-lg); display: flex; flex-direction: column; gap: var(--s-4); }
 .booking__phone { font: var(--display-weight) clamp(40px, 4vw, 56px)/1.05 var(--font-display); letter-spacing: var(--display-tracking); color: var(--p-ink); text-decoration: none; }
-.booking .btn-row { margin-top: auto; }
+.booking__apps { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s-3); }
+.booking__apps a { display: inline-flex; align-items: center; gap: var(--s-3); color: var(--p-ink); text-decoration: none; font-weight: 500; }
+.booking__apps a:hover { color: var(--action); }
 .steps-rows li { display: grid; grid-template-columns: 48px 1fr; column-gap: var(--s-4); align-items: start; }
 .steps-rows li > .step-num { grid-row: span 2; }
 .steps-rows li > p { grid-column: 2; }
 
-/* the service rows link to their pages */
-.rows a.rows__name { color: inherit; text-decoration: none; }
-.rows a.rows__name:hover { color: var(--action); }
+/* ---------- podstrony: tekst obok filmu ---------- */
+.prose > * + * { margin-top: var(--s-4); }
+.prose h2 { margin-bottom: var(--s-6); }
+.prose h3 { margin-top: var(--s-7); font: var(--display-weight) 28px/1.2 var(--font-display); letter-spacing: var(--display-tracking); }
+.prose p { max-width: 62ch; }
+.list-plain { margin: 0; padding: 0; list-style: none; }
+.list-plain li { padding: var(--s-2) 0; border-bottom: 1px solid var(--line); }
+@media (min-width: 1024px) { #tresc #faq .faq { display: grid; grid-template-columns: 1fr 1fr; column-gap: var(--s-6); } }
+
+/* ---------- kolumny pod sobą na węższych ekranach ---------- */
+@media (max-width: 1023px) {
+  main .grid > [class*="span-"] { grid-column: 1 / -1; }
+  main .grid > [class*="span-"] + [class*="span-"] { margin-top: var(--s-6); }
+}
+
+/* ---------- link do pominięcia menu: widoczny tylko po fokusie ---------- */
+.skip { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.skip:focus { width: auto; height: auto; clip-path: none; padding: var(--s-2) var(--s-4); background: var(--p-bg); z-index: 20; }
 
 @media (max-width: 639px) {
   .booking { padding: var(--s-5); }
   .film__play { left: var(--s-4); bottom: var(--s-4); width: 48px; height: 48px; }
-}
-
-/* the films: two at 1:1, one beside the questions */
-#filmy .film--card { aspect-ratio: 5 / 4; }
-.film--faq { aspect-ratio: 1 / 1; }
-.booking__apps { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s-3); }
-.booking__apps a { display: inline-flex; align-items: center; gap: var(--s-3); color: var(--p-ink); text-decoration: none; font-weight: 500; }
-.booking__apps a:hover { color: var(--action); }
-.booking { background: var(--p-surface); }
-
-/* skip link: first child of the header's .wrap, hidden until focused (system.md, Base) */
-.skip { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
-.skip:focus { width: auto; height: auto; clip-path: none; padding: var(--s-2) var(--s-4); background: var(--p-bg); z-index: 20; }
-
-/* phone: the services photograph fills the second screen of its section */
-@media (max-width: 639px) {
-  #atrakcje .frame--fill { min-height: 520px; margin-top: var(--s-7); }
-}
-
-/* tablet held upright and short laptop screens: the longer sections take two screens (layout-v4.md, section 2) */
-@media (min-width: 640px) and (max-width: 1023px) { #filmy, #rezerwacja { --h: 2; } }
-@media (min-width: 1024px) and (max-height: 820px) { #atrakcje, #rezerwacja, #faq { --h: 2; } }
-
-/* service pages: text beside a film */
-.prose > * + * { margin-top: var(--s-4); }
-.prose h2 { margin-bottom: var(--s-6); }
-.prose h3 { margin-top: var(--s-7); font: var(--display-weight) var(--t-h3, 28px)/1.2 var(--font-display); letter-spacing: var(--display-tracking); }
-.prose p { max-width: 62ch; }
-.list-plain { margin: 0; padding: 0; list-style: none; }
-.list-plain li { padding: var(--s-2) 0; border-bottom: 1px solid var(--line); }
-.film--sub { aspect-ratio: 4 / 5; }
-@media (min-width: 1024px) { #tresc #faq .faq { display: grid; grid-template-columns: 1fr 1fr; column-gap: var(--s-6); } }
-
-/* service pages on the tablet and the phone: the text blocks take two screens, the hero stays one */
-@media (min-width: 640px) and (max-width: 1023px) { #tresc > #opis, #tresc > #zakres { --h: 2; } }
-@media (max-width: 639px) {
-  #tresc > #opis, #tresc > #zakres, #tresc > #faq { --hm: 2; }
-  #tresc .hero__kicker, #tresc .hero .btn--secondary { display: none; }
 }
