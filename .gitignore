@@ -3,3 +3,4 @@ repopack*.txt
 *.tar.gz
 CLAUDE.md
 AGENTS.md
+.taste-skill/

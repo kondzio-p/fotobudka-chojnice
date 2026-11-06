@@ -1,8 +1,10 @@
-<!DOCTYPE html>
-<html lang="pl">
+<!doctype html>
+<html lang="pl" data-type="service" data-radius="soft" data-buttons="tonal" data-motion>
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+		<meta name="site-kind" content="other" />
+		<meta name="page-type" content="service" />
 		<meta name="description" content="Zimne ognie i fontanny iskier na wesele w Chojnicach i na Pomorzu. Bezpieczny efekt na tort, pierwszy taniec i wejście pary. Tel. 576 934 594." />
 		<meta name="theme-color" content="#fbf4f1" />
 		<title>Fontanny iskier na wesele – Chojnice | OG Events</title>
@@ -32,9 +34,28 @@
 			href="/images/og-events-logo-prof.png"
 		/>
 		<link rel="shortcut icon" href="/favicon.ico" />
-		<link rel="stylesheet" href="/style/main.css?v=20261106" />
+<link rel="stylesheet" href="/assets/fonts.css">
+<link rel="stylesheet" href="/assets/system.css">
+<link rel="stylesheet" href="/assets/ui/cards.css">
+<link rel="stylesheet" href="/assets/motion/motion.css">
+<link rel="stylesheet" href="/assets/layout/layout.css">
+<link rel="stylesheet" href="/assets/icons/icon.css">
+<style>
+:root {
+  --p-bg: #fbf4f1; --p-surface: #f6e3e8; --p-ink: #2d1b22; --p-muted: #76606a;
+  --p-accent: #801039; --p-accent-ink: #fbf4f1; --p-action: #801039; --p-action-ink: #fbf4f1;
+  --p-inv-bg: #2d1b22; --p-inv-surface: #3a282e; --p-inv-ink: #fbf4f1; --p-inv-muted: #a79a9b;
+  --p-inv-accent: #fbf4f1; --p-inv-accent-ink: #2d1b22; --p-inv-action: #fbf4f1; --p-inv-action-ink: #2d1b22;
+  --font-display: "Source Serif 4", Georgia, serif;
+  --font-text: "Libre Franklin", system-ui, sans-serif;
+  --display-weight: 400;
+  --display-tracking: -0.02em;
+  --display-tracking-xl: -0.026em;
+}
+</style>
+<link rel="stylesheet" href="/assets/site.css?v=8">
 
-		<script type="application/ld+json">
+<script type="application/ld+json">
 			{
 			 "@context": "https://schema.org",
 			 "@type": "Service",
@@ -107,7 +128,7 @@
 			 }
 			}
 		</script>
-		<script type="application/ld+json">
+<script type="application/ld+json">
 			{
 			 "@context": "https://schema.org",
 			 "@type": "FAQPage",
@@ -147,7 +168,7 @@
 			 ]
 			}
 		</script>
-		<script type="application/ld+json">
+<script type="application/ld+json">
 			{
 			 "@context": "https://schema.org",
 			 "@type": "BreadcrumbList",
@@ -167,131 +188,153 @@
 			 ]
 			}
 		</script>
-	</head>
+</head>
+<body>
+<!-- type: service (site-kind other), a service page of fotobudka-chojnice.pl with the home page's deal:
+     hero split, nav-split, close-word head row, footer-visit, rhythm space, buttons tonal -->
 
-	<body>
-		<header class="site-header">
-			<div class="nav-pill">
-				<a class="nav-logo" href="/" aria-label="OG Events – strona główna">
-					<img src="/images/og-events-logo-white.webp" width="397" height="227" alt="OG Events" />
-				</a>
-				<nav class="nav-links" aria-label="Menu główne">
-					<a href="/#oferta">Oferta</a>
-					<a href="/#galeria">Galeria</a>
-					<a href="/#faq">Pytania</a>
-					<a href="/#kontakt">Kontakt</a>
-				</nav>
-				<a class="nav-cta" href="tel:+48576934594">
-					<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-					<span>576 934 594</span>
-				</a>
-			</div>
-		</header>
+<header class="nav nav--split">
+  <div class="wrap nav__bar">
+    <a class="skip" href="#tresc">Przejdź do oferty</a>
+    <nav class="nav__links" aria-label="Menu główne">
+      <div class="nav__item"><a class="nav__link" href="/#atrakcje">Atrakcje</a></div>
+      <div class="nav__item"><a class="nav__link" href="/#filmy">Filmy</a></div>
+      <div class="nav__item"><a class="nav__link" href="/#faq">Pytania</a></div>
+      <div class="nav__item"><a class="nav__link" href="#contact">Kontakt</a></div>
+    </nav>
+    <a class="nav__logo" href="/" aria-label="OG Events, strona główna"><img class="nav__logo-img" src="/images/og-events-logo-black.webp" width="397" height="227" alt="OG Events"></a>
+    <div class="nav__actions">
+      <a class="btn btn--primary" href="/#rezerwacja">Sprawdź wolny termin</a>
+    </div>
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-label="Menu">
+      <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 5h14M2 13h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+</header>
 
-		<main class="subpage">
-			<div class="subpage-inner">
-				<nav class="breadcrumbs" aria-label="Ścieżka nawigacji">
-				<ol>
-					<li><a href="/">Strona główna</a></li>
-					<li>Fontanny iskier</li>
-				</ol>
-			</nav>
-				<h1>Fontanny iskier na wesele – <span class="accent">Chojnice i okolice</span></h1>
-				<p class="subpage-lead">Fontanny iskier to zimne ognie o wysokości od dwóch do czterech metrów, które odpalamy w kluczowym momencie wieczoru. Iskry są chłodne w dotyku i gasną zanim opadną na podłogę – efekt jest spektakularny, ale całkowicie bezpieczny dla gości.</p>
-				<figure class="polaroid subpage-hero">
-					<span class="tape" aria-hidden="true"></span>
-					<img src="/images/fountain.webp" width="2048" height="1536" alt="Fontanny iskier podczas wesela w Chojnicach" decoding="async" />
-					<figcaption class="script">fontanny iskier</figcaption>
-				</figure>
-				<div class="subpage-content">
-					<h2>Najlepsze momenty na iskry</h2>
-				<p>Wjazd tortu weselnego – iskry wystrzeliwują wokół tortu, kiedy kelnerzy wprowadzają go na salę przy zgaszonym świetle. To ujęcie, które trafia na okładkę albumu.</p>
-				<p>Pierwszy taniec i wejście pary młodej to dwa pozostałe klasyki. Coraz częściej odpalamy fontanny również na osiemnastkach przy wnoszeniu tortu i na imprezach firmowych – przy ogłaszaniu wyników czy wejściu prelegenta na scenę.</p>
-				<h2>Jak to działa i czy to bezpieczne</h2>
-				<ul class="subpage-list">
-					<li>Zimne ognie – iskry mają niską temperaturę i gasną w powietrzu</li>
-					<li>Nie brudzą, nie dymią i nie zostawiają zapachu na sali</li>
-					<li>Odpalane zdalnie przez naszego operatora, nigdy przez gości</li>
-					<li>Zachowujemy bezpieczną odległość od gości, tortu i dekoracji</li>
-					<li>Wysokość efektu dobieramy do wysokości sufitu w sali</li>
-					<li>Ustalamy moment odpalenia z DJ-em, fotografem i obsługą sali</li>
-				</ul>
-				<h2>Iskry razem z ciężkim dymem</h2>
-				<p>Najmocniejszy efekt daje połączenie fontann iskier z ciężkim dymem: chmura leżąca przy podłodze odbija światło iskier, a para młoda tańczy dosłownie w środku obrazka. To dwie osobne usługi, ale rozstawiamy je jednocześnie i uruchamiamy z jednego pulpitu.</p>
-				<p>Jeśli planujesz oba efekty, powiedz o tym przy pierwszym kontakcie – łączymy je wtedy w jeden pakiet i przyjeżdżamy raz, z pełnym zestawem sprzętu.</p>
+<main id="tresc">
+  <section class="hero hero--split" aria-labelledby="hero-h">
+    <div class="wrap"><div class="hero-text grid hero__grid">
+      <div class="hero__text span-5">
+        <p class="hero__kicker"><a class="link" href="/">Strona główna</a> / Fontanny iskier</p>
+        <h1 id="hero-h">Fontanny iskier na wesele – Chojnice i okolice</h1>
+        <p class="hero__lead">Fontanny iskier to zimne ognie o wysokości od dwóch do czterech metrów, które odpalamy w kluczowym momencie wieczoru. Iskry są chłodne w dotyku i gasną zanim opadną na podłogę – efekt jest spektakularny, ale całkowicie bezpieczny dla gości.</p>
+        <div class="btn-row"><a class="btn btn--primary" href="/#rezerwacja">Sprawdź wolny termin<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a><a class="btn btn--secondary" href="/#atrakcje">Zobacz inne atrakcje</a></div>
+      </div>
+      <div class="hero__media span-6 start-7">
+        <img src="/images/fountain.webp" width="2048" height="1536" alt="Fontanny iskier podczas wesela w Chojnicach" fetchpriority="high">
+      </div>
+    </div></div>
+  </section>
 
-				<h2>Najczęściej zadawane pytania</h2>
-				<details>
-					<summary>Czy fontanny iskier są bezpieczne w zamkniętej sali?</summary>
-					<p>Tak. To zimne ognie – iskry mają niską temperaturę i gasną, zanim opadną. Odpala je nasz operator z zachowaniem bezpiecznej odległości od gości i dekoracji, a wysokość efektu dobieramy do wysokości sufitu.</p>
-				</details>
-				<details>
-					<summary>Czy trzeba pytać salę o zgodę?</summary>
-					<p>Zalecamy uprzedzić obsługę sali – w praktyce zgody nie ma problemu uzyskać, bo fontanny nie dymią i nie brudzą. Jeśli chcesz, sami skontaktujemy się z salą i dogadamy szczegóły.</p>
-				</details>
-				<details>
-					<summary>Ile kosztują fontanny iskier?</summary>
-					<p>Cena zależy od liczby fontann i momentów, w których mają być użyte. Najkorzystniej wypada pakiet z ciężkim dymem. Zadzwoń pod 576 934 594 po wycenę.</p>
-				</details>
-				<details>
-					<summary>Czy obsługujecie wesela poza Chojnicami?</summary>
-					<p>Tak – dojeżdżamy w całym województwie pomorskim, w tym do Gdańska, Gdyni, Sopotu, Kościerzyny, Bytowa, Kartuz, Człuchowa, Tucholi i Starogardu Gdańskiego.</p>
-				</details>
+  <section class="section" id="opis" aria-labelledby="opis-h">
+    <div class="wrap">
+      <div class="grid grid--top fill">
+        <div class="span-6 prose">
+          <h2 id="opis-h">Najlepsze momenty na iskry</h2>
+          <p>Wjazd tortu weselnego – iskry wystrzeliwują wokół tortu, kiedy kelnerzy wprowadzają go na salę przy zgaszonym świetle. To ujęcie, które trafia na okładkę albumu.</p>
+          <p>Pierwszy taniec i wejście pary młodej to dwa pozostałe klasyki. Coraz częściej odpalamy fontanny również na osiemnastkach przy wnoszeniu tortu i na imprezach firmowych – przy ogłaszaniu wyników czy wejściu prelegenta na scenę.</p>
+        </div>
+        <div class="frame frame--photo span-5 start-8 film film--sub" data-film>
+          <video src="/videos/filmik1s6.webm" poster="/videos/poster_filmik1.webp" muted loop playsinline preload="none" aria-label="Goście w fotobudce 360° na weselu"></video>
+          <button class="film__play" type="button" aria-label="Odtwórz film"><span aria-hidden="true"></span></button>
+        </div>
+      </div>
+    </div>
+  </section>
 
-				<div class="subpage-cta">
-					<p>
-						Sprawdź, czy Twój termin jest jeszcze wolny – wycenę
-						podamy od razu przez telefon.
-					</p>
-					<a class="btn btn-primary" href="tel:+48576934594"
-						>Zadzwoń: 576 934 594</a
-					>
-				</div>
-				</div>
-			</div>
-			<section class="subpage-related">
-				<h2>Pozostałe atrakcje</h2>
-				<ul>
-					<li><a href="/fotobudka-360/">Fotobudka 360°</a></li>
-					<li><a href="/fotolustro/">Fotolustro</a></li>
-					<li><a href="/ciezki-dym/">Ciężki dym</a></li>
-					<li><a href="/neony-led/">Neony LED</a></li>
-					<li><a href="/">Strona główna</a></li>
-				</ul>
-			</section>
-		</main>
+  <section class="section" id="zakres" aria-labelledby="zakres-h">
+    <div class="wrap">
+      <div class="grid grid--top fill">
+        <div class="span-6 prose">
+          <h2 id="zakres-h">Jak to działa i czy to bezpieczne</h2>
+          <ul class="list-plain">
+          <li>Zimne ognie – iskry mają niską temperaturę i gasną w powietrzu</li>
+          <li>Nie brudzą, nie dymią i nie zostawiają zapachu na sali</li>
+          <li>Odpalane zdalnie przez naszego operatora, nigdy przez gości</li>
+          <li>Zachowujemy bezpieczną odległość od gości, tortu i dekoracji</li>
+          <li>Wysokość efektu dobieramy do wysokości sufitu w sali</li>
+          <li>Ustalamy moment odpalenia z DJ-em, fotografem i obsługą sali</li>
+          </ul>
+          <h3>Iskry razem z ciężkim dymem</h3>
+          <p>Najmocniejszy efekt daje połączenie fontann iskier z ciężkim dymem: chmura leżąca przy podłodze odbija światło iskier, a para młoda tańczy dosłownie w środku obrazka. To dwie osobne usługi, ale rozstawiamy je jednocześnie i uruchamiamy z jednego pulpitu.</p>
+          <p>Jeśli planujesz oba efekty, powiedz o tym przy pierwszym kontakcie – łączymy je wtedy w jeden pakiet i przyjeżdżamy raz, z pełnym zestawem sprzętu.</p>
+        </div>
+        <div class="frame frame--photo span-5 start-8 film film--sub" data-film>
+          <video src="/videos/filmik3.webm" poster="/videos/poster_filmik3.webp" muted loop playsinline preload="none" aria-label="Gość pozuje na platformie 360°"></video>
+          <button class="film__play" type="button" aria-label="Odtwórz film"><span aria-hidden="true"></span></button>
+        </div>
+      </div>
+    </div>
+  </section>
 
-		<footer id="kontakt" class="site-footer">
-			<div class="footer-cta">
-				<p class="script">do zobaczenia na parkiecie</p>
-				<h2 class="footer-title">Sprawdź, czy Twój termin <em>jest wolny</em></h2>
-				<a class="footer-phone" href="tel:+48576934594">576 934 594</a>
-				<div class="footer-social">
-					<a href="https://www.facebook.com/profile.php?id=61553668165091" target="_blank" rel="noopener">Facebook · @OG Eventspot</a>
-					<a href="https://www.instagram.com/og.eventspot/" target="_blank" rel="noopener">Instagram · @og.eventspot</a>
-				</div>
-			</div>
+  <section class="section" id="faq" aria-labelledby="faq-h" itemscope itemtype="https://schema.org/FAQPage">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="faq-h">Pytania o wynajem fontann iskier</h2>
+        <p>Nie ma tu Twojego pytania? <a class="link" href="tel:+48576934594">Zadzwoń: 576 934 594</a></p>
+      </div>
+      <div class="faq">
+          <div class="faq__item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <h3 itemprop="name">Czy fontanny iskier są bezpieczne w zamkniętej sali?</h3>
+            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><p itemprop="text">Tak. To zimne ognie – iskry mają niską temperaturę i gasną, zanim opadną. Odpala je nasz operator z zachowaniem bezpiecznej odległości od gości i dekoracji, a wysokość efektu dobieramy do wysokości sufitu.</p></div>
+          </div>
+          <div class="faq__item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <h3 itemprop="name">Czy trzeba pytać salę o zgodę?</h3>
+            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><p itemprop="text">Zalecamy uprzedzić obsługę sali – w praktyce zgody nie ma problemu uzyskać, bo fontanny nie dymią i nie brudzą. Jeśli chcesz, sami skontaktujemy się z salą i dogadamy szczegóły.</p></div>
+          </div>
+          <div class="faq__item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <h3 itemprop="name">Ile kosztują fontanny iskier?</h3>
+            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><p itemprop="text">Cena zależy od liczby fontann i momentów, w których mają być użyte. Najkorzystniej wypada pakiet z ciężkim dymem. Zadzwoń pod 576 934 594 po wycenę.</p></div>
+          </div>
+          <div class="faq__item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <h3 itemprop="name">Czy obsługujecie wesela poza Chojnicami?</h3>
+            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><p itemprop="text">Tak – dojeżdżamy w całym województwie pomorskim, w tym do Gdańska, Gdyni, Sopotu, Kościerzyny, Bytowa, Kartuz, Człuchowa, Tucholi i Starogardu Gdańskiego.</p></div>
+          </div>
+      </div>
+    </div>
+  </section>
+</main>
 
-			<div class="footer-bottom">
-				<nav class="footer-services" aria-label="Nasze usługi">
-					<a href="/fotobudka-360/">Fotobudka 360° Chojnice</a>
-					<a href="/fotolustro/">Fotolustro Chojnice</a>
-					<a href="/ciezki-dym/">Ciężki dym na wesele</a>
-					<a href="/fontanny-iskier/">Fontanny iskier</a>
-					<a href="/neony-led/">Neony LED na wesele</a>
-				</nav>
-				<div class="footer-meta">
-					<a class="footer-credit" href="https://kdzki.pl/" target="_blank" rel="noopener" aria-label="Kdzki – strony internetowe">
-						<img src="/images/logoKdzki.webp" width="2436" height="752" alt="Kdzki" loading="lazy" />
-					</a>
-					<span>© <span data-year>2025</span> OG Events. Wszelkie prawa zastrzeżone.</span>
-				</div>
-			</div>
-		</footer>
+<footer class="footer closing footer--visit" id="contact" aria-labelledby="close-h">
+  <div class="wrap">
+    <div class="closing__cta close--word">
+      <div class="section-head--split">
+        <div><h2 id="close-h">Sprawdź, czy Twój termin jest wolny</h2><p class="t-lead">Wycenę podajemy od razu przez telefon, od poniedziałku do piątku, 9:00–20:00.</p></div>
+        <a class="btn btn--primary" href="/#rezerwacja">Sprawdź wolny termin<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
+      </div>
+    </div>
+    <div class="closing__links">
+      <div class="grid">
+        <div class="span-7 stack-4">
+          <address class="footer__address">Chojnice<br>i całe Pomorze</address>
+          <p>Dojeżdżamy z kompletem sprzętu na salę, montaż i obsługa w cenie.</p>
+        </div>
+        <div class="span-4 start-9 stack-4">
+          <h4>Kontakt telefoniczny</h4>
+          <dl class="hours"><dt>Poniedziałek–piątek</dt><dd>9:00–20:00</dd></dl>
+          <p><a class="link" href="tel:+48576934594">576 934 594</a></p>
+        </div>
+      </div>
+      <nav class="footer__nav" aria-label="Nasze usługi">
+        <a href="/fotobudka-360/">Fotobudka 360° Chojnice</a>
+        <a href="/fotolustro/">Fotolustro Chojnice</a>
+        <a href="/ciezki-dym/">Ciężki dym na wesele</a>
+        <a href="/fontanny-iskier/">Fontanny iskier</a>
+        <a href="/neony-led/">Neony LED na wesele</a>
+      </nav>
+      <div class="footer__legal">
+        <span>&copy; <span data-year>2026</span> OG Events</span>
+        <div class="socials"><a href="https://www.facebook.com/profile.php?id=61553668165091" target="_blank" rel="noopener" aria-label="Facebook OG Events"><svg class="icon-mono" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="#0866FF"><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/></svg></a><a href="https://www.instagram.com/og.eventspot/" target="_blank" rel="noopener" aria-label="Instagram OG Events"><svg class="icon-mono" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="#FF0069"><path d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/></svg></a></div>
+        <a class="credits" href="https://kdzki.pl/" target="_blank" rel="noopener">Strona: Kdzki</a>
+      </div>
+    </div>
+  </div>
+</footer>
 
-		<script src="/js/vendor/gsap.min.js"></script>
-		<script src="/js/vendor/ScrollTrigger.min.js"></script>
-		<script src="/js/vendor/SplitText.min.js"></script>
-		<script src="/js/main.js?v=20261106"></script>
-	</body>
+<script type="module" src="/assets/system.js"></script>
+<script type="module" src="/assets/motion/motion.js"></script>
+<script type="module" src="/assets/layout/layout.js"></script>
+<script src="/assets/site.js?v=3" defer></script>
+</body>
 </html>
