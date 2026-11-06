@@ -41,7 +41,7 @@
 
 	--font-body: "Poppins", system-ui, sans-serif;
 	--font-display: "Cormorant Garamond", Georgia, serif;
-	--font-script: "Parisienne", cursive;
+	--font-script: "Cormorant Garamond", Georgia, serif;
 
 	--radius: 22px;
 	--shadow-soft: 0 18px 50px -20px rgba(75, 10, 34, 0.35);
@@ -115,11 +115,14 @@ p {
 	margin: 0;
 }
 
+/* drobne podpisy nad nagłówkami: spokojna kursywa szeryfowa */
 .script {
 	font-family: var(--font-script);
-	font-weight: 400;
-	color: var(--rose-deep);
-	line-height: 1;
+	font-style: italic;
+	font-weight: 500;
+	letter-spacing: 0.01em;
+	color: #a85d74;
+	line-height: 1.2;
 }
 
 .skip-link {
@@ -325,7 +328,7 @@ p {
 	align-items: center;
 }
 .hero-eyebrow {
-	font-size: clamp(30px, 3.4vw, 42px);
+	font-size: clamp(20px, 2vw, 26px);
 	margin-bottom: 6px;
 }
 .hero-title {
@@ -393,7 +396,7 @@ p {
 }
 .polaroid figcaption {
 	text-align: center;
-	font-size: 24px;
+	font-size: 19px;
 	color: var(--plum);
 	padding: 12px 0 14px;
 }
@@ -506,7 +509,7 @@ p {
 	margin-left: 0;
 }
 .section-kicker {
-	font-size: clamp(26px, 2.6vw, 34px);
+	font-size: clamp(19px, 1.8vw, 24px);
 	margin-bottom: 8px;
 }
 .section-title {
@@ -706,7 +709,7 @@ p {
 }
 .gallery-swiper figcaption {
 	text-align: center;
-	font-size: 26px;
+	font-size: 21px;
 	color: var(--plum);
 	padding: 14px 0 16px;
 }
@@ -861,7 +864,7 @@ p {
 	margin: 0 auto;
 }
 .footer-cta .script {
-	font-size: clamp(28px, 3vw, 38px);
+	font-size: clamp(20px, 2vw, 26px);
 	color: var(--rose-deep);
 }
 .footer-title {
@@ -1254,7 +1257,7 @@ p {
 		padding: 8px 8px 0;
 	}
 	.polaroid figcaption {
-		font-size: 18px;
+		font-size: 16px;
 		padding: 8px 0 10px;
 	}
 	.play-btn {
