@@ -172,3 +172,20 @@ main > section.band + section.band { margin-top: var(--s-5); }
   .foot-grid { grid-template-columns: 1fr; gap: var(--s-7); }
   .foot-legal { flex-direction: column; align-items: flex-start; }
 }
+
+/* ---------- galeria zdjęć z panelu (fotobudka-ogeventspot) ---------- */
+.photo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-5); }
+.photo-grid__item { position: relative; aspect-ratio: 4 / 3; overflow: hidden; border-radius: var(--r-lg); }
+.photo-grid__item .frame__img { transition: transform 0.6s ease; }
+.photo-grid__item:hover .frame__img { transform: scale(1.03); }
+@media (max-width: 1023px) { .photo-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 639px) { .photo-grid { grid-template-columns: 1fr; gap: var(--s-4); } }
+
+/* ---------- stopka: lista miast w dwóch kolumnach ---------- */
+.foot-col--cities ul { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--s-6); }
+/* pięć zdjęć: dwa u góry, trzy u dołu, bez pustej kratki */
+@media (min-width: 1024px) {
+  .photo-grid:has(> :nth-child(5):last-child) { grid-template-columns: repeat(6, 1fr); }
+  .photo-grid:has(> :nth-child(5):last-child) > :nth-child(-n + 2) { grid-column: span 3; }
+  .photo-grid:has(> :nth-child(5):last-child) > :nth-child(n + 3) { grid-column: span 2; }
+}
